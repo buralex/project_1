@@ -63,5 +63,48 @@ a {
   letter-spacing: 2px; }
 
 /*# sourceMappingURL=style_code_academy.css.map */
+.test {
+  margin: 0 20px;
+  border: 2px solid;
+  margin: 10px; }
+
+.imgSvg path {
+  width: 100px;
+  transition: all 0.5s ease-in-out; }
+  .imgSvg path:hover {
+    fill: blue !important; }
+
+.portret {
+  text-align: enter; }
+
+p:hover, h1:hover {
+  font-family: Arial;
+  color: red;
+  background-color: #fff;
+  transition: 0.5s; }
+
+.sanya-wrapper {
+  position: relative;
+  z-index: 1;
+  border: 10px solid white;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  background: url(../img/sanya.jpg) no-repeat center/300px 300px;
+  transition: 0.2s; }
+  .sanya-wrapper:hover {
+    background-size: 320px 320px;
+    border-color: red; }
+
+.sanya {
+  width: 300px;
+  height: 300px; }
+  .sanya:hover {
+    width: 350px;
+    height: 350px; }
+
+.logo {
+  width: 600px; }
 
 /*# sourceMappingURL=style.css.map */

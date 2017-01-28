@@ -1,0 +1,213 @@
+/* ----------------------------------------------------------------------------- 
+ 
+  FONTS
+ 
+----------------------------------------------------------------------------- */
+@font-face {
+  font-family: russoOne;
+  src: url("../fonts/russoOne/russoOne.ttf");
+  font-style: normal;
+  font-weight: normal; }
+/* -----------------------------------------------------------------------------
+
+  MAIN SCREEN 
+
+----------------------------------------------------------------------------- */
+/* -----------------------------------------------------------------------------
+
+  ALERT WINDOWS 
+
+----------------------------------------------------------------------------- */
+/* -----------------------------------------------------------------------------
+
+                VARIABLES
+  
+----------------------------------------------------------------------------- */
+/* -----------------------------------------------------------------------------
+
+  ADAPTIVE 
+
+----------------------------------------------------------------------------- */
+.main {
+  max-width: 1200px; }
+
+.outl-red {
+  outline: 1px solid red; }
+
+body {
+  font: 10px Montserrat, sans-serif;
+  line-height: 1.8;
+  color: #000; }
+
+p {
+  font-size: 1.6rem; }
+
+h3 {
+  font: 2.4rem Arial; }
+
+/*--------------------- First Container ----------------------------------*/
+.bg-1 {
+  background: #e5edf5;
+  /* For browsers that do not support gradients */
+  color: #000; }
+
+.logo-container {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle; }
+
+.logo-wrap {
+  position: relative;
+  padding-bottom: 100%; }
+  .logo-wrap .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: inline-block;
+    z-index: 1; }
+
+.mid {
+  vertical-align: middle;
+  padding-left: 30px; }
+
+.bg-photo-wrap {
+  clear: both;
+  height: 300px;
+  opacity: 0.65;
+  position: relative;
+  background: #e5edf5 url(../img/web-dev.jpg) no-repeat 0 12%/cover fixed; }
+  .bg-photo-wrap .bg-top {
+    height: 15px;
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1), transparent);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1), transparent);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1), transparent);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1), transparent);
+    /* Standard syntax */ }
+  .bg-photo-wrap .bg-bottom {
+    width: 100%;
+    height: 15px;
+    /* For Safari 5.1 to 6.0 */
+    /* For Opera 11.1 to 12.0 */
+    /* For Firefox 3.6 to 15 */
+    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1), transparent);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1), transparent);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1), transparent);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1), transparent);
+    /* Standard syntax */
+    position: absolute;
+    bottom: 0;
+    left: 0; }
+
+.my-name {
+  font-family: russoOne, Impact, "Arial Black", "sans serif";
+  text-transform: capitalize;
+  letter-spacing: 1.5rem;
+  font-size: 6rem;
+  color: #1b3c72; }
+
+/*--------------------- Second Container ----------------------------------*/
+/********flipping photo*/
+.card-wrap {
+  width: 23.333333%;
+  margin: 0 auto; }
+
+.card {
+  width: 100%;
+  position: relative;
+  padding-bottom: 100%;
+  text-align: center;
+  margin: 0 auto; }
+
+.card:hover .card__front, .card:hover .card__back {
+  -webkit-box-shadow: 0  0  50px silver;
+  -moz-box-shadow: 0  0  50px silver;
+  box-shadow: 0  0  50px silver; }
+
+/* card fronts and backs */
+.card__front,
+.card__back {
+  position: absolute;
+  cursor: pointer; }
+
+.card__front,
+.card__back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s; }
+
+.card__back {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg); }
+
+.card.effect__click.flipped .card__front {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg); }
+
+.card.effect__click.flipped .card__back {
+  -webkit-transform: rotateY(0);
+  transform: rotateY(0); }
+
+/********* end flipping photo*/
+.bg-2 {
+  background-color: #474e5d;
+  /* Dark Blue */
+  color: #ffffff; }
+
+.bg-3 {
+  background-color: #ffffff;
+  /* White */
+  color: #555555; }
+
+.bg-4 {
+  background-color: #2f2f2f;
+  /* Black Gray */
+  color: #fff; }
+
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 70px; }
+
+.navbar {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 0;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  letter-spacing: 5px; }
+
+.navbar-nav li a:hover {
+  color: #1abc9c !important; }
+
+.navbar-nav {
+  font: 2rem Arial; }
+
+.night {
+  height: 300px;
+  background: white url(../img/night-new.jpg) no-repeat bottom/cover fixed; }
+
+/***********/
+.im {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  text-align: center; }
+
+.img-wrap {
+  text-align: center;
+  outline: 1px solid red;
+  max-width: 600px;
+  max-height: 600px;
+  margin: 20px auto; }
+
+/*# sourceMappingURL=main.css.map */
