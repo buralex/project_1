@@ -63,8 +63,8 @@ function debounce(fn, delay) {
     
     function deleteAddClasses(elem) {
       if (elem.contains(classFlipped && flippedAgain)){    // binding clicks
-      elem.remove(classFlipped);
-      elem.remove(flippedAgain);
+        elem.remove(classFlipped);
+        elem.remove(flippedAgain);
       
       } if (elem.contains(classFlipped) ) {
         elem.add(flippedAgain);
@@ -104,3 +104,44 @@ function debounce(fn, delay) {
 function myName() {
   document.querySelector('.wave').classList.add('animated');
 }
+
+ /* -----------------------------------------------------------------------------
+
+                               NAV HIDE (*classes without dot)
+  
+----------------------------------------------------------------------------- */
+function navHide(navSel, downCl, upCl) {
+  
+  var didScroll;
+  var lastScrollTop = 0;
+  var delta = 5;
+  var navbarHeight = document.querySelector(navSel).offsetHeight;
+
+  function hasScrolled() {
+    var navCl = document.querySelector(navSel).classList;
+    var st = window.pageYOffset;
+    var windHeight = Math.max( document.documentElement.clientHeight, window.innerHeight );
+    var documHeight = Math.max(document.body.offsetHeight, document.body.scrollHeight );
+                               
+      
+    // Make sure they scroll more than delta
+    if(Math.abs(lastScrollTop - st) <= delta) return;
+    
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+    if (st > lastScrollTop && st > navbarHeight){
+      // Scroll Down
+      navCl.remove(downCl);
+      navCl.add(upCl);
+    } else {
+        // Scroll Up
+        if(st + windHeight < documHeight) {
+          navCl.remove(upCl);
+          navCl.add(downCl);
+        }
+      }
+    lastScrollTop = st;
+    }
+  window.addEventListener("scroll", debounce(function() { hasScrolled() }, 250));
+}
+  

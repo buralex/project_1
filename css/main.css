@@ -147,11 +147,15 @@ h4 {
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 999; }
+  z-index: 999;
+  transition: top 0.1s; }
+
+.navbar.nav-up {
+  top: -185px; }
 
 .navbar-wrap {
   height: 50px;
-  background-color: #e7e7e7; }
+  background-color: #e5edf5; }
 
 .navbar {
   border: 0;
@@ -159,8 +163,7 @@ h4 {
   border-radius: 0;
   margin-bottom: 0;
   font-size: 12px;
-  letter-spacing: 5px;
-  background-color: rgba(1, 1, 1, 0.1); }
+  letter-spacing: 5px; }
 
 #main-nav.navbar-nav li a:hover {
   color: #1b3c72; }
@@ -178,13 +181,13 @@ h4 {
   font: 2rem Arial; }
 
 #about:target, #projects:target, #contact:target {
-  animation: fade 0.9s; }
+  animation: fade 1s linear; }
 
 @keyframes fade {
   0% {
-    opacity: 0.5; }
+    box-shadow: inset 10px 10px 180px 60px rgba(0, 0, 0, 0.75), inset 10px 10px 180px 60px rgba(0, 0, 0, 0.75); }
   100% {
-    opacity: 1; } }
+    box-shadow: inset 0 0 0 0 transparent, inset 0 0 0 0 transparent; } }
 /*-------------------------------------------------------------------------
                         
                          First Container
