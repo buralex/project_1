@@ -49,11 +49,10 @@ function debounce(fn, delay) {
  function flipText(selector, selectorImage, classFlipped, flippedAgain ) {
   var cards = document.querySelectorAll(selector);
   var images = document.querySelectorAll(selectorImage);
-    for ( var i  = 0, len = cards.length; i < len; i++ ) {
+  
+    for ( var i=0, j=0; i < cards.length, j < images.length; i++, j++ ) {
       var card = cards[i];
-    }
-    for ( var i  = 0, len = images.length; i < len; i++ ) {
-      var image = images[i];
+      var image = images[j];
       clickListener( card, image );
     }
 
@@ -112,7 +111,6 @@ function myName() {
 ----------------------------------------------------------------------------- */
 function navHide(navSel, downCl, upCl, area) {
   var a = document.querySelector(area);
-  var didScroll;
   var lastScrollTop = 0;
   var delta = 5;
   var navbar = document.querySelector(navSel);
@@ -121,7 +119,7 @@ function navHide(navSel, downCl, upCl, area) {
   var navCl = document.querySelector(navSel).classList;
   
   function hasScrolled() {
-    var st = window.pageYOffset;
+    var st = Math.max(document.body.scrollTop , window.pageYOffset,  document.documentElement.scrollTop);
     var windHeight = Math.max( document.documentElement.clientHeight, window.innerHeight );
     var documHeight = Math.max(document.body.offsetHeight, document.body.scrollHeight );
     
@@ -135,11 +133,12 @@ function navHide(navSel, downCl, upCl, area) {
     // This is necessary so you never see what is "behind" the navbar.
     if (st > lastScrollTop && st > navbarHeight && isOver == false){
       
-      // Scroll Up
+      // Scroll Down
       navCl.remove(downCl);
       navCl.add(upCl);
     } else {
-      // Scroll Down
+      
+      // Scroll Up
       if(st + windHeight < documHeight) {
         navCl.remove(upCl);
         navCl.add(downCl);
@@ -181,4 +180,178 @@ function remNav(li, nav, modalBorder, removeClass, igniteClass) {
 }
       
   
+
+  /* -----------------------------------------------------------------------------
+
+                               ANIMATE PARTS 
+  
+----------------------------------------------------------------------------- */
+
+/* -----------------------------------------------------------------------------
+                    universal function for animate 
+----------------------------------------------------------------------------- */
+function animateEl(options) {
+
+  var start = performance.now();
+
+  requestAnimationFrame(function animate(time) {
+    // timeFraction от 0 до 1
+    var timeFraction = (time - start) / options.duration;
+    if (timeFraction > 1) timeFraction = 1;
+
+    // текущее состояние анимации
+    var progress = options.timing(timeFraction);
+    if ( isNaN(progress) ) progress = 0.1;
+          
+
+    options.draw(progress);
+
+    if (timeFraction < 1) {
+      requestAnimationFrame(animate);
+    }
+
+  });
+}
+/* -----------------------------------------------------------------------------
+                  end universal function for animate 
+----------------------------------------------------------------------------- */
+
+ inner.onclick = function() {
+      animateEl({
+        duration: 500,
+        timing: function(timeFraction) {
+          return  Math.pow(timeFraction, 0.3);
+        },
+        draw: function(progress) {
+         var scrollHeight = Math.max(
+            document.body.scrollHeight, document.documentElement.scrollHeight,
+            document.body.offsetHeight, document.documentElement.offsetHeight,
+            document.body.clientHeight, document.documentElement.clientHeight
+         );
+        var distance = scrollHeight - window.innerHeight;
+        window.scrollTo(0, progress * distance);
+        //document.body.scrollTop = progress * distance ;
+        //document.documentElement.scrollTop = progress * distance ;
+        //console.log( document.body.scrollTop, progress);
+        }
+      });
+    };
+ /*--------------------------------------------------------*/
+      gtt.onclick = function() {
+    	var distance = Math.max(document.body.scrollTop , window.pageYOffset,  document.documentElement.scrollTop);
+      animateEl({
+        duration: 500,
+        timing: function(timeFraction) {
+          return  Math.pow(timeFraction, 0.3);
+        },
+        draw: function(progress) {
+          if (!isNaN(progress)  ) {
+          window.scrollTo(0,(1 - progress) * distance);
+          //console.log( document.body.scrollTop, 1 - progress);
+          }
+        }
+      });
+    };
+    
+    //window.addEventListener("scroll", function() {  console.log( 'st= %i,  coord= %i ', document.body.scrollTop, inner.getBoundingClientRect().top) });
+    
+/*----------------------------------------------------
+                        going-up elements
+-----------------------------------------------------*/
+function slideArticle(articleSelector) {
+  var lastScrollTop = 0;
+  var delta = 5;
+  var articles = document.querySelectorAll(articleSelector);
+  
+  window.addEventListener("scroll", function() { 
+
+
+
+for (var i = 0; i < articles.length; i++) {
+                var article = articles[i];
+                
+              }
+
+
+var	d = window.innerHeight ;
+                    var	d2 = window.innerHeight - 100;
+                    var coordTop = article.getBoundingClientRect().top;
+                    
+                    	if (coordTop < d/2 ) {
+                    	  
+                    
+
+      animateEl({
+        duration: 2000,
+        timing: function(timeFraction) {
+          return  Math.pow(timeFraction, 0.3);
+        },
+        draw: function(progress) {
+                                              // self-executing function articleUp
+            (function articleUp(article) {
+             
+              for (var i = 0; i < articles.length; i++) {
+                var article = articles[i];
+                hasScrolled( article );
+              }
+   
+            function hasScrolled(article) {
+              
+              var st = Math.max(document.body.scrollTop , window.pageYOffset,  document.documentElement.scrollTop);
+              var windHeight = Math.max( document.documentElement.clientHeight, window.innerHeight );
+              var documHeight = Math.max(document.body.offsetHeight, document.body.scrollHeight );
+          
+              if(Math.abs(lastScrollTop - st) <= delta) return;
+           
+              if (st > lastScrollTop ){
+                // Scroll Down
+                
+                   /*-------------------------- sliding parts -------------------------------------*/
+                console.log(progress);
+                //console.log("a  = " + article.getBoundingClientRect().top);
+                		// var	d = window.innerHeight ;
+                  //   var	d2 = window.innerHeight - 100;
+                  //   var coordTop = article.getBoundingClientRect().top;
+                    
+                  //   	if (coordTop < d/2 ) {
+                    	  
+                    	    var y = (1 - progress) * (coordTop - 50);
+                            window.scrollTo(0, y);
+                            
+                            //console.log( document.body.scrollTop, 1 - progress);
+                         
+                      //window.scrollBy(0, article.getBoundingClientRect().top);
+                      	//window.scrollTo(0, gtt.getBoundingClientRect().top);
+                      
+                    
+                    
+                 /*-------------------------- end sliding parts -------------------------------------*/
+              } else {
+                // Scroll Up
+                }
+                
+                lastScrollTop = st;
+              }
+          
+              
+            })();
+            
+          
+        }
+      });
+  }
+} );
+
+}
+
+
+
+
+
+  
+  
+  
  
+
+    
+   

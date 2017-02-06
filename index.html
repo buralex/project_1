@@ -45,36 +45,39 @@
     </div>
   </nav>
 </div>
-<div id="area"></div>
+<div id="area">
+  <button type="button" class="navbar-toggle">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>                        
+  </button>
+</div>
 
 <!-- First Container -->
-<button onclick="myFunction()" style="position:fixed; top: 100px">this.scrollIntoView(false)</button>
-<script>
-function myFunction() {
-    var elmnt = document.querySelector(".bg-1");
-    elmnt.scrollIntoView();
-}
-</script>
+
+
 <div class="container-fluid bg-1 text-center ">
-  <div class="main">
-    <div class="wave">
-      <div class="upper col-lg-5 ">
-        <span>A</span><span>L</span><span>E</span><span>X</span><span>A</span><span>N</span><span>D</span><span>R</span>
-      </div>
-      <div class="under col-lg-7 ">
-        <span>B</span><span>U</span><span>R</span><span>L</span><span>A</span><span>C</span><span>H</span><span>E</span><span>N</span><span>K</span><span>O</span>
-      </div>
-    </div>
-  </div>
+  
   
   <div class="row">
     <div class="bg-photo-wrap ">
+      <div class="mask"></div>
+      <div class="row parent">
+        <div class="wave">
+          <div class="upper col-lg-5 ">
+            <span>A</span><span>L</span><span>E</span><span>X</span><span>A</span><span>N</span><span>D</span><span>R</span>
+          </div>
+          <div class="under col-lg-7 ">
+            <span>B</span><span>U</span><span>R</span><span>L</span><span>A</span><span>C</span><span>H</span><span>E</span><span>N</span><span>K</span><span>O</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="col-xs-12">
     <h3>I'm an aaa</h3>
   </div>
-  <div class="modal-border">fasfasdfasdfsadfasdfsadfa</div>
+  <div class="modal-border"></div>
 </div>
 
 
@@ -101,9 +104,11 @@ function myFunction() {
       <span class="glyphicon glyphicon-search"></span> Search
     </a>
   </div>
-  
 </div>
 
+<button id="inner" style="z-index: 999"> go to botom )</button>
+<button id="gtt" style="z-index: 999"> go to top )</button>
+<button id="stickTop" class="stickTop" style="z-index: 999">this.scrollIntoVifsdfdsfdsfsdfsdfsdfew(fasdfdsfsdfsdfsdfsdfdslse)</button>
 
 <!-- Third Container (Grid) -->
 <div id="projects" class="container-fluid bg-3 text-center">    
@@ -169,6 +174,7 @@ function myFunction() {
     flipText(".quote", ".face", "turned", "again");
     navHide(".navbar","nav-down", "nav-up", "#area");
     remNav("#myNavbar li", "#myNavbar", ".modal-border", "in", "ignite");
+    slideArticle(".stickTop");
     
     /*------------------------------ nav hide -------------------------------*/ 
     
