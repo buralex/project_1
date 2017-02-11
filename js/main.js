@@ -78,7 +78,7 @@ function debounce(fn, delay) {
         }
       }
       
-      debounce(function() { delTwoClasses(elem) }, 1000)();
+      debounce(function() { delTwoClasses(elem); }, 1000)();
       
     }
     
@@ -109,77 +109,125 @@ function myName() {
                                NAV HIDE (*classes without dot)
   
 ----------------------------------------------------------------------------- */
-function navHide(navSel, downCl, upCl, area) {
-  var a = document.querySelector(area);
+function navHide(navSel, upCl) {
   var lastScrollTop = 0;
   var delta = 5;
   var navbar = document.querySelector(navSel);
-  var isOver = false;
   var navbarHeight = document.querySelector(navSel).offsetHeight;
   var navCl = document.querySelector(navSel).classList;
+  var scrolling = false;
+  
+  function getCoords(elem) { // gets coordinates relative to page
+    var box = elem.getBoundingClientRect();
+  
+    return {
+      top: box.top + pageYOffset,
+      left: box.left + pageXOffset
+    };
+  
+  }
+  
   
   function hasScrolled() {
     var st = Math.max(document.body.scrollTop , window.pageYOffset,  document.documentElement.scrollTop);
     var windHeight = Math.max( document.documentElement.clientHeight, window.innerHeight );
     var documHeight = Math.max(document.body.offsetHeight, document.body.scrollHeight );
-    
-    navbar.addEventListener("mouseover", function(){ isOver = true });
-    navbar.addEventListener("mouseleave", function(){ isOver = false });
       
-    // Make sure they scroll more than delta
     if(Math.abs(lastScrollTop - st) <= delta) return;
-    
-    // If they scrolled down and are past the navbar, add class .nav-up.
-    // This is necessary so you never see what is "behind" the navbar.
-    if (st > lastScrollTop && st > navbarHeight && isOver == false){
+   
+    if (st > lastScrollTop && st > navbarHeight + 100 ){
       
       // Scroll Down
-      navCl.remove(downCl);
       navCl.add(upCl);
+      //console.log("scroll down ",st, windHeight, documHeight);
+      //console.log("scroll down");
+      
+     /*--------------- add animations for sections (self-exec) -----------------*/
+     (function addAnimCl(elem, classAnim) {
+      
+        var elms = document.querySelectorAll(".slideanim");  // array of li elements
+        for (var i = 0; i < elms.length; i++) {
+          var el = elms[i];
+          doSmth(el);
+        }
+        function  doSmth(el) {
+          console.log( "get coords = %i , sum =  %i", getCoords(el).top, st + 600);
+          //console.log("el.getBoundingClientRect().top = %i", el.getBoundingClientRect().top);
+          if (el.getBoundingClientRect().top < 600) {
+            el.classList.add("slide");
+            
+          }
+        }
+        })();
+     /*--------------- end add animations -----------------*/
+
     } else {
       
       // Scroll Up
-      if(st + windHeight < documHeight) {
+      if(st < lastScrollTop) {
         navCl.remove(upCl);
-        navCl.add(downCl);
+        //console.log(st, windHeight, documHeight);
       }
     }
-    
-     // up after some time
-    // if (navCl.contains(downCl) && st != 0 && st > navbarHeight) {
-    //   setTimeout(function(){ navCl.remove(downCl); navCl.add(upCl); }, 4000);  // up after some time
-    // }
-    
     lastScrollTop = st;
   }
-  window.addEventListener("scroll", debounce(function() { hasScrolled() }, 250));
   
-  /* ---------------------- appear when hover ---------------------- */
+  /**/
+    window.addEventListener('scroll', function(e) {
+    
+      if (!scrolling) {
+        scrolling = true;
+        
+        (!window.requestAnimationFrame)
+				? debounce(function() { hasScrolled(); scrolling = false; }, 250)()
+				: window.requestAnimationFrame(function() {
+          hasScrolled();
+          console.log('work');
+          scrolling = false;
+        });
+        
+        
+      }
+      
+      
+    });
 
-  a.addEventListener("mouseover", mouseOver);
-  function mouseOver() {
-    navCl.remove(upCl);
-    navCl.add(downCl);
-  }
 }
 
   /* ---------------------- remove nav when click on li ---------------------- */
   
-function remNav(li, nav, modalBorder, removeClass, igniteClass) {
+function remNav(li, nav, removeClass, navbar, navbarHide) {
   var li = document.querySelectorAll(li);  // array of li elements
   for (var i = 0; i < li.length; i++) {
       li[i].onclick = function(){
+        
         document.querySelector(nav).classList.toggle(removeClass);
+        document.querySelector(navbar).classList.add(navbarHide);
+        
+        /*--------------- add animations for sections (self-exec) -----------------*/
+         (function addAnimCl(elem, classAnim) {
           
-          
-          /* ---------------------- ignite border when click on li ---------------------- */
-          document.querySelector(modalBorder).classList.add(igniteClass);
-          debounce(function() { document.querySelector(modalBorder).classList.remove(igniteClass) }, 1000)();
+            var elms = document.querySelectorAll(".slideanim");  // array of li elements
+            for (var i = 0; i < elms.length; i++) {
+              var el = elms[i];
+              doSmth(el);
+            }
+            function  doSmth(el) {
+              //console.log( "get coords = %i , sum =  %i", getCoords(el).top, st + 600);
+              console.log("el.getBoundingClientRect().top = %i", el.getBoundingClientRect().top);
+                //el.classList.remove("slideanim");
+                el.classList.remove("slide");
+                debounce(function() { el.classList.add("slide"); }, 10)();
+                //el.classList.add("slide");
+                
+              
+            }
+            })();
+     /*--------------- end add animations -----------------*/
+        
       }
   }
 }
-      
-  
 
   /* -----------------------------------------------------------------------------
 
@@ -192,9 +240,10 @@ function remNav(li, nav, modalBorder, removeClass, igniteClass) {
 ----------------------------------------------------------------------------- */
 function animateEl(options) {
 
-  var start = performance.now();
+  var start = Date.now();
 
-  requestAnimationFrame(function animate(time) {
+  requestAnimationFrame(function animate() {
+   var time = Date.now();
     // timeFraction от 0 до 1
     var timeFraction = (time - start) / options.duration;
     if (timeFraction > 1) timeFraction = 1;
@@ -216,7 +265,7 @@ function animateEl(options) {
                   end universal function for animate 
 ----------------------------------------------------------------------------- */
 
- inner.onclick = function() {
+ gtb.onclick = function() {
       animateEl({
         duration: 500,
         timing: function(timeFraction) {
@@ -256,93 +305,129 @@ function animateEl(options) {
     //window.addEventListener("scroll", function() {  console.log( 'st= %i,  coord= %i ', document.body.scrollTop, inner.getBoundingClientRect().top) });
     
 /*----------------------------------------------------
+                        add animations
+-----------------------------------------------------*/  
+
+    sss.onclick = function(){
+        TweenLite.to(window, 2, {scrollTo: 500});
+      }
+    
+    
+    
+    
+    
+    
+/*----------------------------------------------------
                         going-up elements
 -----------------------------------------------------*/
-function slideArticle(articleSelector) {
-  var lastScrollTop = 0;
-  var delta = 5;
-  var articles = document.querySelectorAll(articleSelector);
+// function slideArticle(articleSelector) {
+//   var lastScrollTop = 0;
+//   var delta = 5;
+//   var articles = document.querySelectorAll(articleSelector);
   
-  window.addEventListener("scroll", function() { 
+//   window.addEventListener("scroll", function() { 
 
 
 
-for (var i = 0; i < articles.length; i++) {
-                var article = articles[i];
+// for (var i = 0; i < articles.length; i++) {
+//                 var article = articles[i];
                 
-              }
+//               }
 
 
-var	d = window.innerHeight ;
-                    var	d2 = window.innerHeight - 100;
-                    var coordTop = article.getBoundingClientRect().top;
+// var	d = window.innerHeight ;
+//                     var	d2 = window.innerHeight - 100;
+//                     var coordTop = article.getBoundingClientRect().top;
                     
-                    	if (coordTop < d/2 ) {
+//                     	if (coordTop < d/2 ) {
                     	  
                     
 
-      animateEl({
-        duration: 2000,
-        timing: function(timeFraction) {
-          return  Math.pow(timeFraction, 0.3);
-        },
-        draw: function(progress) {
-                                              // self-executing function articleUp
-            (function articleUp(article) {
+//       animateEl({
+//         duration: 2000,
+//         timing: function(timeFraction) {
+//           return  Math.pow(timeFraction, 0.3);
+//         },
+//         draw: function(progress) {
+//                                               // self-executing function articleUp
+//             (function articleUp(article) {
              
-              for (var i = 0; i < articles.length; i++) {
-                var article = articles[i];
-                hasScrolled( article );
-              }
+//               for (var i = 0; i < articles.length; i++) {
+//                 var article = articles[i];
+//                 hasScrolled( article );
+//               }
    
-            function hasScrolled(article) {
+//             function hasScrolled(article) {
               
-              var st = Math.max(document.body.scrollTop , window.pageYOffset,  document.documentElement.scrollTop);
-              var windHeight = Math.max( document.documentElement.clientHeight, window.innerHeight );
-              var documHeight = Math.max(document.body.offsetHeight, document.body.scrollHeight );
+//               var st = Math.max(document.body.scrollTop , window.pageYOffset,  document.documentElement.scrollTop);
+//               var windHeight = Math.max( document.documentElement.clientHeight, window.innerHeight );
+//               var documHeight = Math.max(document.body.offsetHeight, document.body.scrollHeight );
           
-              if(Math.abs(lastScrollTop - st) <= delta) return;
+//               if(Math.abs(lastScrollTop - st) <= delta) return;
            
-              if (st > lastScrollTop ){
-                // Scroll Down
+//               if (st > lastScrollTop ){
+//                 // Scroll Down
                 
-                   /*-------------------------- sliding parts -------------------------------------*/
-                console.log(progress);
-                //console.log("a  = " + article.getBoundingClientRect().top);
-                		// var	d = window.innerHeight ;
-                  //   var	d2 = window.innerHeight - 100;
-                  //   var coordTop = article.getBoundingClientRect().top;
+//                   /*-------------------------- sliding parts -------------------------------------*/
+//                 console.log(progress);
+//                 //console.log("a  = " + article.getBoundingClientRect().top);
+//                 		// var	d = window.innerHeight ;
+//                   //   var	d2 = window.innerHeight - 100;
+//                   //   var coordTop = article.getBoundingClientRect().top;
                     
-                  //   	if (coordTop < d/2 ) {
+//                   //   	if (coordTop < d/2 ) {
                     	  
-                    	    var y = (1 - progress) * (coordTop - 50);
-                            window.scrollTo(0, y);
+//                     	    var y = (1 - progress) * (coordTop - 50);
+//                             window.scrollTo(0, y);
                             
-                            //console.log( document.body.scrollTop, 1 - progress);
+//                             //console.log( document.body.scrollTop, 1 - progress);
                          
-                      //window.scrollBy(0, article.getBoundingClientRect().top);
-                      	//window.scrollTo(0, gtt.getBoundingClientRect().top);
+//                       //window.scrollBy(0, article.getBoundingClientRect().top);
+//                       	//window.scrollTo(0, gtt.getBoundingClientRect().top);
                       
                     
                     
-                 /*-------------------------- end sliding parts -------------------------------------*/
-              } else {
-                // Scroll Up
-                }
+//                 /*-------------------------- end sliding parts -------------------------------------*/
+//               } else {
+//                 // Scroll Up
+//                 }
                 
-                lastScrollTop = st;
-              }
+//                 lastScrollTop = st;
+//               }
           
               
-            })();
+//             })();
             
           
-        }
-      });
-  }
-} );
+//         }
+//       });
+//   }
+// } );
 
-}
+// }
+
+// function slideArticle(articleSelector) {
+//   var lastScrollTop = 0;
+//   var delta = 5;
+//   var articles = document.querySelectorAll(articleSelector);
+  
+//   window.addEventListener("scroll", function() { 
+
+
+
+//       animateEl({
+//         duration: 2000,
+//         timing: function(timeFraction) {
+//           return  Math.pow(timeFraction, 0.3);
+//         },
+//         draw: function(progress) {
+//                             // var y = (1 - progress) * (coordTop - 50);
+//                             //window.scrollTo(0, 5);           
+//         }      
+//   } );
+
+// } );
+// }
 
 
 

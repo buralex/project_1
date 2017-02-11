@@ -157,13 +157,6 @@ h4 {
     #area .navbar-toggle .icon-bar {
       background-color: #888; }
 
-.navbar.fixed {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 999;
-  transition: top 0.2s; }
-
 .navbar.nav-up {
   top: -50px; }
 
@@ -172,6 +165,12 @@ h4 {
   background-color: #e5edf5; }
 
 .navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  -webkit-transition: 0.1s;
+  transition: 0.2s;
   border: 0;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 0;
@@ -194,19 +193,15 @@ h4 {
 .navbar-nav {
   font: 2rem Arial; }
 
-.modal-border.ignite {
-  animation: border 3s; }
-
-@keyframes border {
-  0% {
-    box-shadow: inset 0 0 0 3000px rgba(56, 132, 205, 0.8); }
-  100% {
-    box-shadow: inset 0 0 0 0px rgba(56, 132, 205, 0.8); } }
 @keyframes fade {
   0% {
-    opacity: 0.1; }
+    opacity: 0;
+    -webkit-transform: translateY(70%);
+    -ms-transform: translateY(70%); }
   100% {
-    opacity: 1; } }
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%); } }
 @keyframes shake {
   0% {
     transform: perspective(1000px) rotateY(15deg);
@@ -222,6 +217,31 @@ h4 {
     box-shadow: 12px 10px 54px -10px rgba(0, 0, 0, 0.75), inset 75px 0px 60px -35px rgba(0, 0, 0, 0.75); }
   100% {
     transform: perspective(1000px) rotateY(0deg); } }
+.slideanim {
+  visibility: hidden; }
+
+.slide {
+  -webkit-animation: slide 1s;
+  animation: slide 1s;
+  visibility: visible; }
+
+@-webkit-keyframes slide {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(70%);
+    -ms-transform: translateY(70%); }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%); } }
+@media screen and (max-width: 768px) {
+  .col-sm-4 {
+    text-align: center;
+    margin: 25px 0; }
+
+  .btn-lg {
+    width: 100%;
+    margin-bottom: 35px; } }
 /*-------------------------------------------------------------------------
                         
                          First Container
@@ -233,7 +253,9 @@ h4 {
   display: block;
   width: 35px;
   height: 35px;
-  background: url(../img/logo_3.svg) no-repeat 0 0/100%; }
+  background: url(../img/logo_3.svg) no-repeat;
+  background-position: 0 0;
+  background-size: 100%; }
 
 .bg-1 {
   transition: 3s;
@@ -246,7 +268,9 @@ h4 {
   clear: both;
   overflow: hidden;
   position: relative;
-  background: url(../img/web-dev.jpg) no-repeat 0 -200px/100% fixed, rgba(255, 255, 255, 0.9); }
+  background: url(../img/web-dev.jpg) no-repeat fixed;
+  background-position: 50% -200px;
+  background-size: 100%; }
   .bg-photo-wrap:before {
     height: 30px;
     top: -30px;
@@ -255,7 +279,7 @@ h4 {
     display: block;
     position: absolute;
     width: 100%;
-    z-index: 20;
+    z-index: 10;
     box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.9); }
   .bg-photo-wrap:after {
     height: 30px;
@@ -265,7 +289,7 @@ h4 {
     display: block;
     position: absolute;
     width: 100%;
-    z-index: 20;
+    z-index: 10;
     box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.9); }
   .bg-photo-wrap .mask {
     position: absolute;
@@ -377,12 +401,18 @@ h4 {
   display: block;
   width: 10%;
   height: 100px;
-  background: url(../img/face-up.svg) no-repeat center/contain; }
+  background: url(../img/face-up.svg) no-repeat;
+  background-position: center;
+  background-size: contain; }
   .face.turned {
+    -webkit-transform: rotateZ(180deg);
     transform: rotateZ(180deg);
+    -webkit-transition: 1s;
     transition: 1s; }
   .face.turned.again {
+    -webkit-transform: rotateZ(360deg);
     transform: rotateZ(360deg);
+    -webkit-transition: 1s;
     transition: 1s; }
 
 .quote {
@@ -398,14 +428,20 @@ h4 {
   bottom: 0;
   margin: 80px auto 80px auto; }
   .quote.turned {
+    -webkit-transform: rotateZ(180deg);
     transform: rotateZ(180deg);
+    -webkit-transition: 1s;
     transition: 1s; }
   .quote.turned h3 {
+    -webkit-transform: rotateY(180deg) rotateX(180deg);
     transform: rotateY(180deg) rotateX(180deg); }
   .quote.turned.again {
+    -webkit-transform: rotateZ(360deg);
     transform: rotateZ(360deg);
+    -webkit-transition: 1s;
     transition: 1s; }
   .quote.turned.again h3 {
+    -webkit-transform: rotateY(360deg) rotateX(360deg);
     transform: rotateY(360deg) rotateX(360deg); }
   .quote span {
     color: #d7e6ff; }
@@ -427,6 +463,8 @@ h4 {
   margin: 0 auto;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden; }
+  .card img {
+    border-radius: 50%; }
 
 .card:hover .card__front, .card:hover .card__back {
   -webkit-box-shadow: 0  0  50px silver;
@@ -481,10 +519,12 @@ h4 {
   color: #fff; }
 
 .night {
-  position: relative;
   height: 300px;
   overflow: hidden;
-  background: white url(../img/night.jpg) no-repeat bottom/100% fixed; }
+  position: relative;
+  background: url(../img/night.jpg) no-repeat fixed;
+  background-position: 50% bottom;
+  background-size: 100%; }
   .night:before {
     height: 30px;
     top: -30px;
@@ -507,5 +547,52 @@ h4 {
     box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.9); }
 
 /***********/
+.modal-body1 {
+  z-index: 100;
+  border: 50px dashed rgba(255, 255, 255, 0.5);
+  width: 400%;
+  height: 600%;
+  position: fixed;
+  bottom: -250%;
+  right: 200%;
+  background-color: #7aa9ff;
+  opacity: 0.5;
+  transform-origin: center right;
+  animation: moveLeft 2s; }
+
+.modal-body2 {
+  z-index: 100;
+  border: 50px dashed rgba(255, 255, 255, 0.5);
+  width: 400%;
+  height: 600%;
+  position: fixed;
+  top: -250%;
+  left: 200%;
+  background-color: #f2e0ff;
+  background: linear-gradient(to right, #93cede 0%, #75bdd1 27%, #49a5bf 71%, #49a5bf 100%);
+  opacity: 0.5;
+  transform-origin: center left;
+  animation: moveRight 2s; }
+
+@keyframes moveLeft {
+  0% {
+    transform: rotate(-45deg) translateY(0);
+    right: 50%; }
+  50% {
+    transform: rotate(-45deg) translateY(25%);
+    right: 50%; }
+  100% {
+    transform: rotate(-45deg) translateY(25%);
+    right: 200%; } }
+@keyframes moveRight {
+  0% {
+    transform: rotate(-45deg) translateY(0);
+    left: 50%; }
+  50% {
+    transform: rotate(-45deg) translateY(-25%);
+    left: 50%; }
+  100% {
+    transform: rotate(-45deg) translateY(-25%);
+    left: 200%; } }
 
 /*# sourceMappingURL=main.css.map */

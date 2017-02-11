@@ -511,7 +511,10 @@ $(document).ready(function(){
       var pos = $(this).offset().top;
 
       var winTop = $(window).scrollTop();
+      console.log("pos = %i, wintop= %i",pos, winTop);
+      //console.log("el.getBoundingClientRect().top = %i");
         if (pos < winTop + 600) {
+          
           $(this).addClass("slide");
         }
     });
