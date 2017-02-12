@@ -151,7 +151,7 @@ function navHide(navSel, upCl) {
           doSmth(el);
         }
         function  doSmth(el) {
-          console.log( "get coords = %i , sum =  %i", getCoords(el).top, st + 600);
+          //console.log( "get coords = %i , sum =  %i", getCoords(el).top, st + 600);
           //console.log("el.getBoundingClientRect().top = %i", el.getBoundingClientRect().top);
           if (el.getBoundingClientRect().top < 600) {
             el.classList.add("slide");
@@ -182,7 +182,7 @@ function navHide(navSel, upCl) {
 				? debounce(function() { hasScrolled(); scrolling = false; }, 250)()
 				: window.requestAnimationFrame(function() {
           hasScrolled();
-          console.log('work');
+          //console.log('work');
           scrolling = false;
         });
         
@@ -199,34 +199,96 @@ function navHide(navSel, upCl) {
 function remNav(li, nav, removeClass, navbar, navbarHide) {
   var li = document.querySelectorAll(li);  // array of li elements
   for (var i = 0; i < li.length; i++) {
-      li[i].onclick = function(){
-        
-        document.querySelector(nav).classList.toggle(removeClass);
-        document.querySelector(navbar).classList.add(navbarHide);
+    var link = li[i];
+    handleClick(link, i);
+  }  
+      
+      
+      function handleClick(link, index) {
+      link.addEventListener('click', function(e) {
+        //e.preventDefault();
+        //goToTab(index);
+        //console.log(link.children[0].getAttribute("href"));
+        var anchor = link.children[0].getAttribute("href");
         
         /*--------------- add animations for sections (self-exec) -----------------*/
-         (function addAnimCl(elem, classAnim) {
+        (function addAnimCl(classAnim) {
           
-            var elms = document.querySelectorAll(".slideanim");  // array of li elements
+            var anchorAll = anchor + " *";
+            
+            var elms = document.querySelectorAll(anchorAll);  // array of li elements
+            //console.log(anchorAll);
+            
             for (var i = 0; i < elms.length; i++) {
-              var el = elms[i];
-              doSmth(el);
+              var div = elms[i];
+               //console.log(" element = " + div);
+              show(div, i);
+            }  
+            
+            function show(div, index) {
+               //var dCl = div.classList;
+               if (div.classList.contains("slideanim") ) {
+                 
+                        div.classList.remove("slide");
+                      debounce(function() { div.classList.add("slide"); }, 10)();
+                              
+                }
             }
-            function  doSmth(el) {
-              //console.log( "get coords = %i , sum =  %i", getCoords(el).top, st + 600);
-              console.log("el.getBoundingClientRect().top = %i", el.getBoundingClientRect().top);
-                //el.classList.remove("slideanim");
-                el.classList.remove("slide");
-                debounce(function() { el.classList.add("slide"); }, 10)();
-                //el.classList.add("slide");
+            // for (var i = 0; i < elms.length; i++) {
+            //   var el = elms[i];
+            //   doSmth(el);
+            // }
+            // function  doSmth(el) {
+            //   //console.log( "get coords = %i , sum =  %i", getCoords(el).top, st + 600);
+            //   //console.log("el.getBoundingClientRect().top = %i", el.getBoundingClientRect().top);
+                
+            //     el.classList.remove("slide");
+            //     debounce(function() { el.classList.add("slide"); }, 10)();
+                
                 
               
-            }
+            // }
             })();
-     /*--------------- end add animations -----------------*/
+         /*--------------- end add animations -----------------*/
         
-      }
-  }
+      });
+    };
+      
+      
+      
+      
+    //   li[i].onclick = function(){
+        
+    //     console.log(link.children[0]);
+        
+    //     //var child = document.querySelector('li[i]').classList.toggle(removeClass);
+        
+    //     document.querySelector(nav).classList.toggle(removeClass);
+    //     //document.querySelector(navbar).classList.add(navbarHide);
+        
+    //     /*--------------- add animations for sections (self-exec) -----------------*/
+    //     (function addAnimCl(elem, classAnim) {
+          
+    //         var elms = document.querySelectorAll(".slideanim");  // array of li elements
+    //         for (var i = 0; i < elms.length; i++) {
+    //           var el = elms[i];
+    //           doSmth(el);
+    //         }
+    //         function  doSmth(el) {
+    //           //console.log( "get coords = %i , sum =  %i", getCoords(el).top, st + 600);
+    //           //console.log("el.getBoundingClientRect().top = %i", el.getBoundingClientRect().top);
+                
+    //             el.classList.remove("slide");
+    //             debounce(function() { el.classList.add("slide"); }, 10)();
+                
+                
+              
+    //         }
+    //         })();
+    // /*--------------- end add animations -----------------*/
+        
+    //   }
+  
 }
 
   /* -----------------------------------------------------------------------------
@@ -264,8 +326,8 @@ function animateEl(options) {
 /* -----------------------------------------------------------------------------
                   end universal function for animate 
 ----------------------------------------------------------------------------- */
-
- gtb.onclick = function() {
+  var gtb = document.querySelector("#gtb");
+  gtb.onclick = function() {
       animateEl({
         duration: 500,
         timing: function(timeFraction) {
@@ -286,6 +348,7 @@ function animateEl(options) {
       });
     };
  /*--------------------------------------------------------*/
+      var gtt = document.querySelector("#gtt");
       gtt.onclick = function() {
     	var distance = Math.max(document.body.scrollTop , window.pageYOffset,  document.documentElement.scrollTop);
       animateEl({
