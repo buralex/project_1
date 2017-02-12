@@ -154,8 +154,10 @@ function navHide(navSel, upCl) {
           //console.log( "get coords = %i , sum =  %i", getCoords(el).top, st + 600);
           //console.log("el.getBoundingClientRect().top = %i", el.getBoundingClientRect().top);
           if (el.getBoundingClientRect().top < 600) {
-            el.classList.add("slide");
-            
+            //el.classList.add("slide");
+            if (window.getComputedStyle(el).visibility == "hidden"){
+              TweenLite.from(el, 0.7, {y: '+=70%', autoAlpha: 0});
+            }
           }
         }
         })();
@@ -229,8 +231,10 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
                //var dCl = div.classList;
                if (div.classList.contains("slideanim") ) {
                  
-                        div.classList.remove("slide");
-                      debounce(function() { div.classList.add("slide"); }, 10)();
+                 TweenLite.from(div, 0.7, {y: '+=70%', autoAlpha: 0});
+                 //TweenLite.to(div, 0.7, {y: 100});
+                        //div.classList.remove("slide");
+                      //debounce(function() { div.classList.add("slide"); }, 10)();
                               
                 }
             }
