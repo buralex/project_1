@@ -79,7 +79,7 @@ function debounce(fn, delay) {
 ----------------------------------------------------------------------------- */
 
 function myName() {
-  document.querySelector('.wave').classList.add('animated');
+  //document.querySelector('.wave').classList.add('animated');
 }
 
  /* -----------------------------------------------------------------------------
@@ -280,19 +280,3 @@ function wave() {
   TweenLite.from(document.querySelector(".under span:nth-child(11)"), 0.5, {y: '-=100%', delay: 1.2, autoAlpha: 0});
   
 }
-
-
-
-
-    
-    
-    
-    
-
-  
-  
-  
- 
-
-    
-   
