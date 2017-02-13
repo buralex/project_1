@@ -55,38 +55,22 @@ function debounce(fn, delay) {
   
   text.onclick = rotate;
   image.onclick = rotate;
-  
+
   function rotate() {
     ang +=180; 
-    TweenLite.to(image, 1, { css:{rotation: ang} });
-    TweenLite.to(text, 1, { css:{rotation: 180}, onComplete: complete});
-    TweenLite.set(textIn, { css:{rotationY: 180, rotationX: 180}});
+    TweenLite.to(image, 0.8, { rotation: ang });
+    TweenLite.to(text, 0.8, { rotation: 180, onComplete: complete});
+    TweenLite.set(textIn, { rotationY: 180, rotationX: 180});
     
     function complete(){
       if (ang == 360) {
-        TweenLite.set(image, { css:{rotation: 0}});
+        TweenLite.set(image, { rotation: 0});
         ang = 0;
       }
-      TweenLite.set(text, { css:{rotation: 0}});
-      TweenLite.set(textIn, { css:{rotationY: 0, rotationX: 0}});
+      TweenLite.set(text, { rotation: 0});
+      TweenLite.set(textIn, { rotationY: 0, rotationX: 0});
     }
   }
-  
-  // function rotate() {
-  //   ang +=180; 
-  //   TweenLite.to(image, 1, { rotation: ang, });
-  //   TweenLite.to(text, 1, { rotation: 180, onComplete: complete});
-  //   TweenLite.set(textIn, { rotationY: 180, rotationX: 180});
-    
-  //   function complete(){
-  //     if (ang == 360) {
-  //       TweenLite.set(image, { rotation: 0});
-  //       ang = 0;
-  //     }
-  //     TweenLite.set(text, { rotation: 0});
-  //     TweenLite.set(textIn, { rotationY: 0, rotationX: 0});
-  //   }
-  // }
 }
  /* -----------------------------------------------------------------------------
 
@@ -274,22 +258,29 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
 -----------------------------------------------------*/
 
 function wave() {
-  var upper = document.querySelectorAll(".upper span");
-  var delayUp = 1.2;
-
-  for (var i = 0; i < upper.length; i++) {
-    //var span = upper[i];
-    
-    TweenLite.from(upper[i], 0.4, {y: '+=100%', delay: delayUp, autoAlpha: 0});
-    //console.log(" element = " + delayUp + " == " + upper[i]);
-    delayUp -= 0.15;
-     
-    //show(div, i);
-  }
+  TweenLite.from(document.querySelector(".upper span:nth-child(1)"), 0.5, {y: '+=100%', delay: 0.9, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".upper span:nth-child(2)"), 0.5, {y: '+=100%', delay: 0.8, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".upper span:nth-child(3)"), 0.5, {y: '+=100%', delay: 0.7, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".upper span:nth-child(4)"), 0.5, {y: '+=100%', delay: 0.6, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".upper span:nth-child(5)"), 0.5, {y: '+=100%', delay: 0.5, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".upper span:nth-child(6)"), 0.5, {y: '+=100%', delay: 0.4, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".upper span:nth-child(7)"), 0.5, {y: '+=100%', delay: 0.3, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".upper span:nth-child(8)"), 0.5, {y: '+=100%', delay: 0.2, autoAlpha: 0});
   
-//   TweenLite.from(span, 3, {y: '+=100%', delay: 0.5, autoAlpha: 0});
-// console.log(" element = " + delayUp + " == " + span);
+  TweenLite.from(document.querySelector(".under span:nth-child(1)"), 0.5, {y: '-=100%', delay: 0.2, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".under span:nth-child(2)"), 0.5, {y: '-=100%', delay: 0.3, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".under span:nth-child(3)"), 0.5, {y: '-=100%', delay: 0.4, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".under span:nth-child(4)"), 0.5, {y: '-=100%', delay: 0.5, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".under span:nth-child(5)"), 0.5, {y: '-=100%', delay: 0.6, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".under span:nth-child(6)"), 0.5, {y: '-=100%', delay: 0.7, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".under span:nth-child(7)"), 0.5, {y: '-=100%', delay: 0.8, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".under span:nth-child(8)"), 0.5, {y: '-=100%', delay: 0.9, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".under span:nth-child(9)"), 0.5, {y: '-=100%', delay: 1.0, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".under span:nth-child(10)"), 0.5, {y: '-=100%', delay: 1.1, autoAlpha: 0});
+  TweenLite.from(document.querySelector(".under span:nth-child(11)"), 0.5, {y: '-=100%', delay: 1.2, autoAlpha: 0});
+  
 }
+
 
 
 
