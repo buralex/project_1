@@ -47,52 +47,46 @@ function debounce(fn, delay) {
   
 ----------------------------------------------------------------------------- */
  function flipText(selector, selectorImage, classFlipped, flippedAgain ) {
-  var cards = document.querySelectorAll(selector);
-  var images = document.querySelectorAll(selectorImage);
   
-    for ( var i=0, j=0; i < cards.length, j < images.length; i++, j++ ) {
-      var card = cards[i];
-      var image = images[j];
-      clickListener( card, image );
-    }
-
-  function clickListener(card, image) {
-    var img = image.classList;
-    var c = card.classList;
+  var text = document.querySelector(selector);
+  var textIn = document.querySelector(".quote h3");
+  var image = document.querySelector(selectorImage);
+  var ang = 0;
+  
+  text.onclick = rotate;
+  image.onclick = rotate;
+  
+  function rotate() {
+    ang +=180; 
+    TweenLite.to(image, 1, { css:{rotation: ang} });
+    TweenLite.to(text, 1, { css:{rotation: 180}, onComplete: complete});
+    TweenLite.set(textIn, { css:{rotationY: 180, rotationX: 180}});
     
-    function deleteAddClasses(elem) {
-      if (elem.contains(classFlipped && flippedAgain)){    // binding clicks
-        elem.remove(classFlipped);
-        elem.remove(flippedAgain);
-      
-      } if (elem.contains(classFlipped) ) {
-        elem.add(flippedAgain);
-      } else {
-        elem.add(classFlipped);
+    function complete(){
+      if (ang == 360) {
+        TweenLite.set(image, { css:{rotation: 0}});
+        ang = 0;
       }
-      
-      function delTwoClasses(elem) {
-        if (elem.contains(classFlipped && flippedAgain)){
-         elem.remove(classFlipped);
-         elem.remove(flippedAgain);
-        }
-      }
-      
-      debounce(function() { delTwoClasses(elem); }, 1000)();
-      
+      TweenLite.set(text, { css:{rotation: 0}});
+      TweenLite.set(textIn, { css:{rotationY: 0, rotationX: 0}});
     }
-    
-    
-    image.addEventListener( "click", function() {
-      deleteAddClasses(img);
-      deleteAddClasses(c);
-    });
-    
-    card.addEventListener( "click", function() {
-      deleteAddClasses(img);
-      deleteAddClasses(c);
-    });
   }
+  
+  // function rotate() {
+  //   ang +=180; 
+  //   TweenLite.to(image, 1, { rotation: ang, });
+  //   TweenLite.to(text, 1, { rotation: 180, onComplete: complete});
+  //   TweenLite.set(textIn, { rotationY: 180, rotationX: 180});
+    
+  //   function complete(){
+  //     if (ang == 360) {
+  //       TweenLite.set(image, { rotation: 0});
+  //       ang = 0;
+  //     }
+  //     TweenLite.set(text, { rotation: 0});
+  //     TweenLite.set(textIn, { rotationY: 0, rotationX: 0});
+  //   }
+  // }
 }
  /* -----------------------------------------------------------------------------
 
@@ -211,6 +205,8 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
         //e.preventDefault();
         //goToTab(index);
         //console.log(link.children[0].getAttribute("href"));
+        
+        document.querySelector(nav).classList.toggle(removeClass);
         var anchor = link.children[0].getAttribute("href");
         
         /*--------------- add animations for sections (self-exec) -----------------*/
@@ -232,66 +228,15 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
                if (div.classList.contains("slideanim") ) {
                  
                  TweenLite.from(div, 0.7, {y: '+=70%', autoAlpha: 0});
-                 //TweenLite.to(div, 0.7, {y: 100});
-                        //div.classList.remove("slide");
-                      //debounce(function() { div.classList.add("slide"); }, 10)();
-                              
+                 
                 }
             }
-            // for (var i = 0; i < elms.length; i++) {
-            //   var el = elms[i];
-            //   doSmth(el);
-            // }
-            // function  doSmth(el) {
-            //   //console.log( "get coords = %i , sum =  %i", getCoords(el).top, st + 600);
-            //   //console.log("el.getBoundingClientRect().top = %i", el.getBoundingClientRect().top);
-                
-            //     el.classList.remove("slide");
-            //     debounce(function() { el.classList.add("slide"); }, 10)();
-                
-                
-              
-            // }
+            
             })();
          /*--------------- end add animations -----------------*/
         
       });
     };
-      
-      
-      
-      
-    //   li[i].onclick = function(){
-        
-    //     console.log(link.children[0]);
-        
-    //     //var child = document.querySelector('li[i]').classList.toggle(removeClass);
-        
-    //     document.querySelector(nav).classList.toggle(removeClass);
-    //     //document.querySelector(navbar).classList.add(navbarHide);
-        
-    //     /*--------------- add animations for sections (self-exec) -----------------*/
-    //     (function addAnimCl(elem, classAnim) {
-          
-    //         var elms = document.querySelectorAll(".slideanim");  // array of li elements
-    //         for (var i = 0; i < elms.length; i++) {
-    //           var el = elms[i];
-    //           doSmth(el);
-    //         }
-    //         function  doSmth(el) {
-    //           //console.log( "get coords = %i , sum =  %i", getCoords(el).top, st + 600);
-    //           //console.log("el.getBoundingClientRect().top = %i", el.getBoundingClientRect().top);
-                
-    //             el.classList.remove("slide");
-    //             debounce(function() { el.classList.add("slide"); }, 10)();
-                
-                
-              
-    //         }
-    //         })();
-    // /*--------------- end add animations -----------------*/
-        
-    //   }
   
 }
 
@@ -301,204 +246,57 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
   
 ----------------------------------------------------------------------------- */
 
-/* -----------------------------------------------------------------------------
-                    universal function for animate 
------------------------------------------------------------------------------ */
-function animateEl(options) {
-
-  var start = Date.now();
-
-  requestAnimationFrame(function animate() {
-   var time = Date.now();
-    // timeFraction от 0 до 1
-    var timeFraction = (time - start) / options.duration;
-    if (timeFraction > 1) timeFraction = 1;
-
-    // текущее состояние анимации
-    var progress = options.timing(timeFraction);
-    if ( isNaN(progress) ) progress = 0.1;
-          
-
-    options.draw(progress);
-
-    if (timeFraction < 1) {
-      requestAnimationFrame(animate);
-    }
-
-  });
-}
-/* -----------------------------------------------------------------------------
-                  end universal function for animate 
------------------------------------------------------------------------------ */
-  var gtb = document.querySelector("#gtb");
-  gtb.onclick = function() {
-      animateEl({
-        duration: 500,
-        timing: function(timeFraction) {
-          return  Math.pow(timeFraction, 0.3);
-        },
-        draw: function(progress) {
-         var scrollHeight = Math.max(
-            document.body.scrollHeight, document.documentElement.scrollHeight,
-            document.body.offsetHeight, document.documentElement.offsetHeight,
-            document.body.clientHeight, document.documentElement.clientHeight
-         );
-        var distance = scrollHeight - window.innerHeight;
-        window.scrollTo(0, progress * distance);
-        //document.body.scrollTop = progress * distance ;
-        //document.documentElement.scrollTop = progress * distance ;
-        //console.log( document.body.scrollTop, progress);
-        }
-      });
-    };
- /*--------------------------------------------------------*/
-      var gtt = document.querySelector("#gtt");
-      gtt.onclick = function() {
-    	var distance = Math.max(document.body.scrollTop , window.pageYOffset,  document.documentElement.scrollTop);
-      animateEl({
-        duration: 500,
-        timing: function(timeFraction) {
-          return  Math.pow(timeFraction, 0.3);
-        },
-        draw: function(progress) {
-          if (!isNaN(progress)  ) {
-          window.scrollTo(0,(1 - progress) * distance);
-          //console.log( document.body.scrollTop, 1 - progress);
-          }
-        }
-      });
-    };
-    
-    //window.addEventListener("scroll", function() {  console.log( 'st= %i,  coord= %i ', document.body.scrollTop, inner.getBoundingClientRect().top) });
-    
 /*----------------------------------------------------
-                        add animations
+                        scroll animations
 -----------------------------------------------------*/  
 
     sss.onclick = function(){
         TweenLite.to(window, 2, {scrollTo: 500});
       }
+      
+/*----------------------------------------------------
+                        gates animation
+-----------------------------------------------------*/
+
+
+    var mb1 = document.querySelector(".modal-body1");
+    var mb2 = document.querySelector(".modal-body2");
+    var mbDiv1 = document.querySelector(".modal-body1 div");
+    var mbDiv2 = document.querySelector(".modal-body2 div");
     
-    
-    
-    
-    
+    TweenLite.to(mbDiv1, 1, {y: '-=25%', delay: 0.2});
+    TweenLite.to(mbDiv2, 1, {y: '+=25%', delay: 0.2});
+    TweenLite.to(mb1, 1, {x: '-=100%', ease: Power1. easeInOut, delay: 1.2});
+    TweenLite.to(mb2, 1, {x: '+=100%', ease: Power1. easeInOut, delay: 1.2});
     
 /*----------------------------------------------------
-                        going-up elements
+                        name animation
 -----------------------------------------------------*/
-// function slideArticle(articleSelector) {
-//   var lastScrollTop = 0;
-//   var delta = 5;
-//   var articles = document.querySelectorAll(articleSelector);
+
+function wave() {
+  var upper = document.querySelectorAll(".upper span");
+  var delayUp = 1.2;
+
+  for (var i = 0; i < upper.length; i++) {
+    //var span = upper[i];
+    
+    TweenLite.from(upper[i], 0.4, {y: '+=100%', delay: delayUp, autoAlpha: 0});
+    //console.log(" element = " + delayUp + " == " + upper[i]);
+    delayUp -= 0.15;
+     
+    //show(div, i);
+  }
   
-//   window.addEventListener("scroll", function() { 
+//   TweenLite.from(span, 3, {y: '+=100%', delay: 0.5, autoAlpha: 0});
+// console.log(" element = " + delayUp + " == " + span);
+}
 
 
 
-// for (var i = 0; i < articles.length; i++) {
-//                 var article = articles[i];
-                
-//               }
-
-
-// var	d = window.innerHeight ;
-//                     var	d2 = window.innerHeight - 100;
-//                     var coordTop = article.getBoundingClientRect().top;
-                    
-//                     	if (coordTop < d/2 ) {
-                    	  
-                    
-
-//       animateEl({
-//         duration: 2000,
-//         timing: function(timeFraction) {
-//           return  Math.pow(timeFraction, 0.3);
-//         },
-//         draw: function(progress) {
-//                                               // self-executing function articleUp
-//             (function articleUp(article) {
-             
-//               for (var i = 0; i < articles.length; i++) {
-//                 var article = articles[i];
-//                 hasScrolled( article );
-//               }
-   
-//             function hasScrolled(article) {
-              
-//               var st = Math.max(document.body.scrollTop , window.pageYOffset,  document.documentElement.scrollTop);
-//               var windHeight = Math.max( document.documentElement.clientHeight, window.innerHeight );
-//               var documHeight = Math.max(document.body.offsetHeight, document.body.scrollHeight );
-          
-//               if(Math.abs(lastScrollTop - st) <= delta) return;
-           
-//               if (st > lastScrollTop ){
-//                 // Scroll Down
-                
-//                   /*-------------------------- sliding parts -------------------------------------*/
-//                 console.log(progress);
-//                 //console.log("a  = " + article.getBoundingClientRect().top);
-//                 		// var	d = window.innerHeight ;
-//                   //   var	d2 = window.innerHeight - 100;
-//                   //   var coordTop = article.getBoundingClientRect().top;
-                    
-//                   //   	if (coordTop < d/2 ) {
-                    	  
-//                     	    var y = (1 - progress) * (coordTop - 50);
-//                             window.scrollTo(0, y);
-                            
-//                             //console.log( document.body.scrollTop, 1 - progress);
-                         
-//                       //window.scrollBy(0, article.getBoundingClientRect().top);
-//                       	//window.scrollTo(0, gtt.getBoundingClientRect().top);
-                      
-                    
-                    
-//                 /*-------------------------- end sliding parts -------------------------------------*/
-//               } else {
-//                 // Scroll Up
-//                 }
-                
-//                 lastScrollTop = st;
-//               }
-          
-              
-//             })();
-            
-          
-//         }
-//       });
-//   }
-// } );
-
-// }
-
-// function slideArticle(articleSelector) {
-//   var lastScrollTop = 0;
-//   var delta = 5;
-//   var articles = document.querySelectorAll(articleSelector);
-  
-//   window.addEventListener("scroll", function() { 
-
-
-
-//       animateEl({
-//         duration: 2000,
-//         timing: function(timeFraction) {
-//           return  Math.pow(timeFraction, 0.3);
-//         },
-//         draw: function(progress) {
-//                             // var y = (1 - progress) * (coordTop - 50);
-//                             //window.scrollTo(0, 5);           
-//         }      
-//   } );
-
-// } );
-// }
-
-
-
-
+    
+    
+    
+    
 
   
   
