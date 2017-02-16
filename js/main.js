@@ -1,5 +1,5 @@
  "use strict";
- 
+
   /* -----------------------------------------------------------------------------
 
                                DEBOUNCE  (sets timeout)
@@ -47,29 +47,51 @@ function debounce(fn, delay) {
   
 ----------------------------------------------------------------------------- */
  function flipText(selector, selectorImage, classFlipped, flippedAgain ) {
+  var cards = document.querySelectorAll(selector);
+  var images = document.querySelectorAll(selectorImage);
   
-  var text = document.querySelector(selector);
-  var textIn = document.querySelector(".quote h3");
-  var image = document.querySelector(selectorImage);
-  var ang = 0;
-  
-  text.onclick = rotate;
-  image.onclick = rotate;
-
-  function rotate() {
-    ang +=180; 
-    TweenLite.to(image, 0.8, { rotation: ang });
-    TweenLite.to(text, 0.8, { rotation: 180, onComplete: complete});
-    TweenLite.set(textIn, { rotationY: 180, rotationX: 180});
-    
-    function complete(){
-      if (ang == 360) {
-        TweenLite.set(image, { rotation: 0});
-        ang = 0;
-      }
-      TweenLite.set(text, { rotation: 0});
-      TweenLite.set(textIn, { rotationY: 0, rotationX: 0});
+    for ( var i=0, j=0; i < cards.length, j < images.length; i++, j++ ) {
+      var card = cards[i];
+      var image = images[j];
+      clickListener( card, image );
     }
+
+  function clickListener(card, image) {
+    var img = image.classList;
+    var c = card.classList;
+    
+    function deleteAddClasses(elem) {
+      if (elem.contains(classFlipped && flippedAgain)){    // binding clicks
+        elem.remove(classFlipped);
+        elem.remove(flippedAgain);
+      
+      } if (elem.contains(classFlipped) ) {
+        elem.add(flippedAgain);
+      } else {
+        elem.add(classFlipped);
+      }
+      
+      function delTwoClasses(elem) {
+        if (elem.contains(classFlipped && flippedAgain)){
+         elem.remove(classFlipped);
+         elem.remove(flippedAgain);
+        }
+      }
+      
+      debounce(function() { delTwoClasses(elem); }, 1000)();
+      
+    }
+    
+    
+    image.addEventListener( "click", function() {
+      deleteAddClasses(img);
+      deleteAddClasses(c);
+    });
+    
+    card.addEventListener( "click", function() {
+      deleteAddClasses(img);
+      deleteAddClasses(c);
+    });
   }
 }
  /* -----------------------------------------------------------------------------
@@ -78,9 +100,6 @@ function debounce(fn, delay) {
   
 ----------------------------------------------------------------------------- */
 
-function myName() {
-  //document.querySelector('.wave').classList.add('animated');
-}
 
  /* -----------------------------------------------------------------------------
 
@@ -94,17 +113,6 @@ function navHide(navSel, upCl) {
   var navbarHeight = document.querySelector(navSel).offsetHeight;
   var navCl = document.querySelector(navSel).classList;
   var scrolling = false;
-  
-  function getCoords(elem) { // gets coordinates relative to page
-    var box = elem.getBoundingClientRect();
-  
-    return {
-      top: box.top + pageYOffset,
-      left: box.left + pageXOffset
-    };
-  
-  }
-  
   
   function hasScrolled() {
     var st = Math.max(document.body.scrollTop , window.pageYOffset,  document.documentElement.scrollTop);
@@ -133,8 +141,11 @@ function navHide(navSel, upCl) {
           //console.log("el.getBoundingClientRect().top = %i", el.getBoundingClientRect().top);
           if (el.getBoundingClientRect().top < 600) {
             //el.classList.add("slide");
+            
             if (window.getComputedStyle(el).visibility == "hidden"){
-              TweenLite.from(el, 0.7, {y: '+=70%', autoAlpha: 0});
+              el.classList.add("slide");
+              
+             
             }
           }
         }
@@ -188,9 +199,11 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
       link.addEventListener('click', function(e) {
         //e.preventDefault();
         //goToTab(index);
-        //console.log(link.children[0].getAttribute("href"));
+        console.log(link.children[0].getAttribute("href"));
         
-        document.querySelector(nav).classList.toggle(removeClass);
+        document.querySelector(nav).classList.remove(removeClass);
+        document.querySelector(navbar).classList.add(navbarHide);
+        
         var anchor = link.children[0].getAttribute("href");
         
         /*--------------- add animations for sections (self-exec) -----------------*/
@@ -211,7 +224,11 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
                //var dCl = div.classList;
                if (div.classList.contains("slideanim") ) {
                  
-                 TweenLite.from(div, 0.7, {y: '+=70%', autoAlpha: 0});
+                 div.classList.remove("slide");
+                 
+                 debounce(function() { div.classList.add("slide"); }, 10)();
+                 
+                 //TweenLite.from(div, 0.7, {y: '+=70%', autoAlpha: 0});
                  
                 }
             }
@@ -234,49 +251,58 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
                         scroll animations
 -----------------------------------------------------*/  
 
-    sss.onclick = function(){
-        TweenLite.to(window, 2, {scrollTo: 500});
-      }
       
 /*----------------------------------------------------
                         gates animation
 -----------------------------------------------------*/
-
-
-    var mb1 = document.querySelector(".modal-body1");
-    var mb2 = document.querySelector(".modal-body2");
-    var mbDiv1 = document.querySelector(".modal-body1 div");
-    var mbDiv2 = document.querySelector(".modal-body2 div");
+function starting() {
+  var q = {    
+    s: function (selector) { return document.querySelector(selector); },
+    sa: function (selector) { return document.querySelectorAll(selector); }
+  }
+  
+  
+  q.s('.wave').classList.add('animated');
+  q.s('.fly1').classList.add('animated');
+  
+  
+  
+  
     
-    TweenLite.to(mbDiv1, 1, {y: '-=25%', delay: 0.2});
-    TweenLite.to(mbDiv2, 1, {y: '+=25%', delay: 0.2});
-    TweenLite.to(mb1, 1, {x: '-=100%', ease: Power1. easeInOut, delay: 1.2});
-    TweenLite.to(mb2, 1, {x: '+=100%', ease: Power1. easeInOut, delay: 1.2});
+    function calcHeight() {
+      var vheight = Math.max( document.documentElement.clientHeight, window.innerHeight );
+      q.s('.cont-persp').style.height = vheight + "px";
+      q.s('.parent').style.height = vheight*0.5 + "px";
+      q.s('.stage').style.height = (vheight - vheight*0.5 - 50) + "px";
+  
+      //console.log("d", q.s('.parent').style.paddingTop = vheight*0.2 + "px");
+    }
+    calcHeight();
+    //window.addEventListener("resize", calcHeight);
+    //window.addEventListener("scroll", calcWidth);
+
+  
+  
+  
+
+  
+}
+
+
+    // var mb1 = document.querySelector(".modal-body1");
+    // var mb2 = document.querySelector(".modal-body2");
+    // var mbDiv1 = document.querySelector(".modal-body1 div");
+    // var mbDiv2 = document.querySelector(".modal-body2 div");
+     
+    // TweenLite.to(mbDiv1, 1, {y: '-=25%', delay: 0.2});
+    // TweenLite.to(mbDiv2, 1, {y: '+=25%', delay: 0.2});
+    // TweenLite.from(mb1, 1, {x: '-50%', ease: Power1. easeInOut, delay: 1.2});
+    // TweenLite.from(mb2, 1, {x: '50%', ease: Power1. easeInOut, delay: 1.2});
+
     
 /*----------------------------------------------------
                         name animation
 -----------------------------------------------------*/
 
-function wave() {
-  TweenLite.from(document.querySelector(".upper span:nth-child(1)"), 0.5, {y: '+=100%', delay: 0.9, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".upper span:nth-child(2)"), 0.5, {y: '+=100%', delay: 0.8, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".upper span:nth-child(3)"), 0.5, {y: '+=100%', delay: 0.7, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".upper span:nth-child(4)"), 0.5, {y: '+=100%', delay: 0.6, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".upper span:nth-child(5)"), 0.5, {y: '+=100%', delay: 0.5, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".upper span:nth-child(6)"), 0.5, {y: '+=100%', delay: 0.4, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".upper span:nth-child(7)"), 0.5, {y: '+=100%', delay: 0.3, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".upper span:nth-child(8)"), 0.5, {y: '+=100%', delay: 0.2, autoAlpha: 0});
-  
-  TweenLite.from(document.querySelector(".under span:nth-child(1)"), 0.5, {y: '-=100%', delay: 0.2, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".under span:nth-child(2)"), 0.5, {y: '-=100%', delay: 0.3, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".under span:nth-child(3)"), 0.5, {y: '-=100%', delay: 0.4, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".under span:nth-child(4)"), 0.5, {y: '-=100%', delay: 0.5, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".under span:nth-child(5)"), 0.5, {y: '-=100%', delay: 0.6, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".under span:nth-child(6)"), 0.5, {y: '-=100%', delay: 0.7, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".under span:nth-child(7)"), 0.5, {y: '-=100%', delay: 0.8, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".under span:nth-child(8)"), 0.5, {y: '-=100%', delay: 0.9, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".under span:nth-child(9)"), 0.5, {y: '-=100%', delay: 1.0, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".under span:nth-child(10)"), 0.5, {y: '-=100%', delay: 1.1, autoAlpha: 0});
-  TweenLite.from(document.querySelector(".under span:nth-child(11)"), 0.5, {y: '-=100%', delay: 1.2, autoAlpha: 0});
-  
-}
+ 
+ /*--------------------------------------------------------*/

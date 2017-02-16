@@ -14,7 +14,7 @@
       <div class="row">
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul id="main-nav" class="nav navbar-nav navbar-right ">
-            <li><a href="#about">ОБО МНЕ </a></li>
+            <li><a href="#about">ИНФО</a></li>
             <li><a href="#projects">ПРОЕКТЫ</a></li>
             <li><a href="#contact">КОНТАКТЫ</a></li>
           </ul>
