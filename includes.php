@@ -4,7 +4,7 @@
 <div class="modal-body1"><div><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
 <div class="modal-body2"><div><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
 
-<div class=" cont-persp">
+
   <!-- Navbar -->
     <?php 
       switch($q){
@@ -18,7 +18,8 @@
           include 'inc/en/navbar_en.php'; 
       } 
     ?>
-    
+    <!-- end Navbar -->
+<div class=" cont-persp">    
   <!-- First Container -->
   
   <div class="container-fluid bg-1 text-center ">
@@ -26,6 +27,7 @@
       <div class="bg-photo-wrap ">
         <div class="mask"></div>
         <div class="row parent">
+          
           <div class="wave ">
             <?php 
             switch($q){
@@ -38,53 +40,69 @@
               default: 
                 include 'inc/en/wave_en.php'; 
             } 
-          ?>  
+          ?> 
+          <div class="fly1 col-xs-12">web developer</div>
           </div>
+          
         </div>
+        
       </div>
     </div>
   </div>
-  <div class="container-fluid stage">
-    <div class="fly1 col-xs-6">web</div>
-    <div class="fly2 col-xs-6">developer</div>
-    
-    <div id="box">
-  			<div class="box">
-              <div class="side side1">1 </div>
-      				<div class="side side2">2</div>
-				      <div class="side side3">3</div>
-				      <div class="side side4">4</div>
-      				<div class="side side5">5 </div>
-				      <div class="side side6">6</div>
-			  </div>
+  
+  
+    <div class="container-fluid stage">
+     <div class="row">
+        <div class="line"></div>
+            
+       
+       <div id="box">
+           <div class="box">
+                 <div class="side side1">1 </div>
+                 <div class="side side2">2</div>
+                   <div class="side side3">3</div>
+                   <div class="side side4">4</div>
+                 <div class="side side5">5 </div>
+                   <div class="side side6">6</div>
+             </div>
+       </div>
+       <div class="bot-wrap">
+          <div class="line-bot"></div>
+        </div>
+     </div>
     </div>
-  </div>
+    
+    
+  
   
 </div>
 
 
 <!-- Second Container -->
 <div id="about" class="container-fluid bg-2 text-center ">
-  <div class="card-wrap text-center">
-    <div class="card ">
-      <div class="card__front ">
-        <img src="img/i_front.jpg" alt="my-photo" class="my-photo img-responsive ">
-      </div>
-      <div class="card__back ">
-        <img src="img/i_back.jpg" alt="my-photo" class="my-photo img-responsive ">
+  <div class="row">
+    <div class="line-bg-2"></div>
+    <div class="card-wrap text-center">
+      <div class="card ">
+        <div class="card__front ">
+          <img src="img/i_front.jpg" alt="my-photo" class="my-photo img-responsive ">
+        </div>
+        <div class="card__back ">
+          <img src="img/i_back.jpg" alt="my-photo" class="my-photo img-responsive ">
+        </div>
       </div>
     </div>
-  </div>
-  <div class="col-xs-12 fadeUp">
-    <div class="face"></div>
-    <div class="quote">
-      <h3 class=" ">Ever since I wrote first "tag", my life has made a complete <span>180&#176</span> turn.</h3>
+    <div class="col-xs-12 fadeUp">
+      <div class="face"></div>
+      <div class="quote">
+        <h3 class=" ">Ever since I wrote first "tag", my life has made a complete <span>180&#176</span> turn.</h3>
+      </div>
+      
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+      <a href="#" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-search"></span> Search
+      </a>
     </div>
-    
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-    <a href="#" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-search"></span> Search
-    </a>
   </div>
 </div>
 

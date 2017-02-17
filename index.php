@@ -82,16 +82,13 @@
 
 
 <script>
-var q = {    
-    s: function (selector) { return document.querySelector(selector); },
-    sa: function (selector) { return document.querySelectorAll(selector); }
-  }
+
     
-    q.s('.bg-photo-wrap').classList.add('animated');
-    q.s('.modal-body1').classList.add('animated');
-    q.s('.modal-body2').classList.add('animated');
-    q.s('.modal-body1 div').classList.add('animated');
-    q.s('.modal-body2 div').classList.add('animated');
+    document.querySelector('.bg-photo-wrap').classList.add('animated');
+    document.querySelector('.modal-body1').classList.add('animated');
+    document.querySelector('.modal-body2').classList.add('animated');
+    document.querySelector('.modal-body1 div').classList.add('animated');
+    document.querySelector('.modal-body2 div').classList.add('animated');
 
 function initialise(){
 

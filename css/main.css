@@ -349,6 +349,7 @@ h4 {
   position: relative; }
 
 .wave {
+  backface-visibility: hidden;
   width: 100%;
   position: absolute;
   top: 50%;
@@ -471,15 +472,47 @@ h4 {
   perspective: 400px;
   perspective-origin: 50% 80%; }
 
+.line {
+  width: 100%;
+  position: absolute;
+  top: -10px;
+  height: 10px;
+  background: black;
+  border-top-right-radius: 50% 100%;
+  border-top-left-radius: 50% 100%;
+  background: radial-gradient(ellipse at 50% 110%, #2839a9 0%, #0a0a0a 100%); }
+
+.line-bg-2 {
+  width: 100%;
+  position: absolute;
+  top: -10px;
+  height: 10px;
+  border-top-right-radius: 50% 100%;
+  border-top-left-radius: 50% 100%;
+  background: #474e5d; }
+
+.bot-wrap {
+  background: radial-gradient(ellipse at 50% 110%, #2839a9 0%, #0a0a0a 100%); }
+
+.line-bot {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 10px;
+  background: black;
+  border-top-right-radius: 50% 100%;
+  border-top-left-radius: 50% 100%;
+  background: #e5edf5; }
+
 .stage {
   position: relative;
-  background: radial-gradient(ellipse at center, #1428a6 0%, #0a0a0a 100%); }
+  background: radial-gradient(ellipse at center, #2839a9 0%, #0a0a0a 100%); }
 
-.fly1, .fly2 {
+.fly1 {
+  backface-visibility: hidden;
   font-family: russoOne, Impact, "Arial Black", "sans serif";
-  text-transform: uppercase;
   letter-spacing: 1.5rem;
-  font-size: 6rem;
+  font-size: 1.2rem;
   overflow: hidden;
   color: #1b3c72;
   -webkit-transform-origin: 50% 50% -300px;
@@ -744,6 +777,7 @@ h4 {
 
 /********* end flipping photo*/
 .bg-2 {
+  position: relative;
   backface-visibility: hidden;
   background-color: #474e5d;
   /* Dark Blue */

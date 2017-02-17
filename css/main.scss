@@ -110,11 +110,11 @@
 }
 
 body {
-      background: #e5edf5;
-      //background: rgba(0, 0, 0, 0.2);
-      font: 10px Montserrat, sans-serif;
-      line-height: 1.8;
-      color: #000;
+  background: #e5edf5;
+  //background: rgba(0, 0, 0, 0.2);
+  font: 10px Montserrat, sans-serif;
+  line-height: 1.8;
+  color: #000;
   }
 
 #langSwitch {
@@ -541,6 +541,7 @@ h4 {
 }
 
 .wave {
+  backface-visibility: hidden;
   width: 100%;
   //position: absolute;
   position: absolute;
@@ -608,6 +609,7 @@ h4 {
 /*-----------------------------------------------------------------*/
 
 .cont-persp {
+  //position: relative;
   text-align: center;
   perspective: 400px;
   perspective-origin: 50% 80%;
@@ -615,15 +617,57 @@ h4 {
   //height: 100vh;
   //outline: 5px solid red;
 }
+
+.line {
+  width: 100%;
+  position: absolute;
+  top: -10px;
+  height: 10px;
+  background: black;
+  border-top-right-radius: 50% 100%;
+  border-top-left-radius: 50% 100%;
+  background: radial-gradient(ellipse at 50% 110%, rgba(40, 57, 169, 1) 0%, rgba(10,10,10,1) 100%);
+  
+  //box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.9);
+}
+
+.line-bg-2 {
+  width: 100%;
+  position: absolute;
+  top: -10px;
+  height: 10px;
+  border-top-right-radius: 50% 100%;
+  border-top-left-radius: 50% 100%;
+  background: #474e5d;
+}
+
+.bot-wrap {
+  background: radial-gradient(ellipse at 50% 110%, rgba(40, 57, 169, 1) 0%, rgba(10,10,10,1) 100%);
+}
+.line-bot {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 10px;
+  background: black;
+  border-top-right-radius: 50% 100%;
+  border-top-left-radius: 50% 100%;
+  //background: radial-gradient(ellipse at 50% 110%, rgba(40, 57, 169, 1) 0%, rgba(10,10,10,1) 100%);
+  background: #e5edf5;
+  //box-shadow: inset 0px 39px 68px -34px rgba(0,0,0,0.75);
+  //box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.9);
+}
+
 .stage {
   position: relative;
-  background: radial-gradient(ellipse at center, rgba(20,40,166,1) 0%, rgba(10,10,10,1) 100%);
+  background: radial-gradient(ellipse at center, rgba(40, 57, 169, 1) 0%, rgba(10,10,10,1) 100%);
 }
-.fly1, .fly2 {
+.fly1 {
+  backface-visibility: hidden;
   font-family: russoOne, Impact, "Arial Black", "sans serif";
-    text-transform: uppercase;
+    //text-transform: uppercase;
     letter-spacing: 1.5rem;
-    font-size: 6rem;
+    font-size: 1.2rem;
     overflow: hidden;
     color: #1b3c72;
   -webkit-transform-origin: 50% 50% -300px;
@@ -998,6 +1042,7 @@ h4 {
 
 
 .bg-2 {
+  position: relative;
   backface-visibility: hidden;
   background-color: #474e5d; /* Dark Blue */
   color: #ffffff;

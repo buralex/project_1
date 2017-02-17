@@ -256,29 +256,26 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
                         gates animation
 -----------------------------------------------------*/
 function starting() {
-  var q = {    
-    s: function (selector) { return document.querySelector(selector); },
-    sa: function (selector) { return document.querySelectorAll(selector); }
-  }
+ 
   
-  
-  q.s('.wave').classList.add('animated');
-  q.s('.fly1').classList.add('animated');
+  document.querySelector('.wave').classList.add('animated');
+  document.querySelector('.fly1').classList.add('animated');
   
   
   
   
     
     function calcHeight() {
+      //window.outerHeight
       var vheight = Math.max( document.documentElement.clientHeight, window.innerHeight );
-      q.s('.cont-persp').style.height = vheight + "px";
-      q.s('.parent').style.height = vheight*0.5 + "px";
-      q.s('.stage').style.height = (vheight - vheight*0.5 - 50) + "px";
+      document.querySelector('.cont-persp').style.height = vheight + "px";
+      document.querySelector('.parent').style.height = vheight*0.5 + "px";
+      document.querySelector('.stage').style.height = (vheight - vheight*0.5 - 50) + "px";
   
       //console.log("d", q.s('.parent').style.paddingTop = vheight*0.2 + "px");
     }
     calcHeight();
-    //window.addEventListener("resize", calcHeight);
+    window.addEventListener("resize", calcHeight);
     //window.addEventListener("scroll", calcWidth);
 
   
