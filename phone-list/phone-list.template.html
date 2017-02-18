@@ -1,0 +1,8 @@
+
+<ul class="phones">
+  <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp" class=" ">
+    
+    <a href="#!/phones/{{phone.id}}">{{phone.name}}</a>
+    
+  </li>
+</ul>
