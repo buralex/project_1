@@ -620,15 +620,14 @@ h4 {
 
 .line {
   width: 100%;
-  position: absolute;
-  top: -10px;
+  position: relative;
+  bottom: 10px;
+  z-index:99;
   height: 10px;
   background: black;
   border-top-right-radius: 50% 100%;
   border-top-left-radius: 50% 100%;
-  background: radial-gradient(ellipse at 50% 110%, rgba(40, 57, 169, 1) 0%, rgba(10,10,10,1) 100%);
-  
-  //box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.9);
+  background: radial-gradient(ellipse 50% 70% at 50% 100%, rgba(19, 24, 58, 1), rgba(10,10,10,1));
 }
 
 .line-bg-2 {
@@ -661,6 +660,7 @@ h4 {
 .stage {
   position: relative;
   background: radial-gradient(ellipse at center, rgba(40, 57, 169, 1) 0%, rgba(10,10,10,1) 100%);
+  //box-shadow: 0px -42px 122px -71px rgba(40, 57, 169, 1);
 }
 .fly1 {
   backface-visibility: hidden;

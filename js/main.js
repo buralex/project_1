@@ -1,5 +1,38 @@
  "use strict";
 
+ /* -----------------------------------------------------------------------------
+                             heights of first block
+----------------------------------------------------------------------------- */
+function starting() {
+ 
+  
+  document.querySelector('.wave').classList.add('animated');
+  document.querySelector('.fly1').classList.add('animated');
+  
+  
+  
+  
+    
+    function calcHeight() {
+      //window.outerHeight
+      var vheight = Math.max( document.documentElement.clientHeight, window.innerHeight );
+      document.querySelector('.cont-persp').style.height = vheight + "px";
+      document.querySelector('.parent').style.height = vheight*0.5 + "px";
+      document.querySelector('.stage').style.height = (vheight - vheight*0.5 - 50) + "px";
+  
+      //console.log("d", q.s('.parent').style.paddingTop = vheight*0.2 + "px");
+    }
+    calcHeight();
+    window.addEventListener("resize", calcHeight);
+    //window.addEventListener("scroll", calcWidth);
+
+  
+  
+  
+
+  
+}
+
   /* -----------------------------------------------------------------------------
 
                                DEBOUNCE  (sets timeout)
@@ -255,35 +288,7 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
 /*----------------------------------------------------
                         gates animation
 -----------------------------------------------------*/
-function starting() {
- 
-  
-  document.querySelector('.wave').classList.add('animated');
-  document.querySelector('.fly1').classList.add('animated');
-  
-  
-  
-  
-    
-    function calcHeight() {
-      //window.outerHeight
-      var vheight = Math.max( document.documentElement.clientHeight, window.innerHeight );
-      document.querySelector('.cont-persp').style.height = vheight + "px";
-      document.querySelector('.parent').style.height = vheight*0.5 + "px";
-      document.querySelector('.stage').style.height = (vheight - vheight*0.5 - 50) + "px";
-  
-      //console.log("d", q.s('.parent').style.paddingTop = vheight*0.2 + "px");
-    }
-    calcHeight();
-    window.addEventListener("resize", calcHeight);
-    //window.addEventListener("scroll", calcWidth);
 
-  
-  
-  
-
-  
-}
 
 
     // var mb1 = document.querySelector(".modal-body1");
