@@ -1,5 +1,5 @@
  "use strict";
-
+console.log("sdkfjklsafas");
  /* -----------------------------------------------------------------------------
                              heights of first block
 ----------------------------------------------------------------------------- */
@@ -32,6 +32,7 @@ function starting() {
 
   
 }
+
 
   /* -----------------------------------------------------------------------------
 
@@ -232,7 +233,7 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
       link.addEventListener('click', function(e) {
         //e.preventDefault();
         //goToTab(index);
-        console.log(link.children[0].getAttribute("href"));
+        //console.log(link.children[0].getAttribute("href"));
         
         document.querySelector(nav).classList.remove(removeClass);
         document.querySelector(navbar).classList.add(navbarHide);
@@ -257,9 +258,9 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
                //var dCl = div.classList;
                if (div.classList.contains("slideanim") ) {
                  
-                 div.classList.remove("slide");
+                 //div.classList.remove("slide");
                  
-                 debounce(function() { div.classList.add("slide"); }, 10)();
+                 //debounce(function() { div.classList.add("slide"); }, 10)();
                  
                  //TweenLite.from(div, 0.7, {y: '+=70%', autoAlpha: 0});
                  

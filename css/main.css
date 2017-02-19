@@ -945,5 +945,14 @@ h4 {
     transform: skewY(-20deg) translateY(0%); }
   100% {
     transform: skewY(-20deg) translateY(25%); } }
+/*--------------------------------------------------------------------------
+
+                              angular
+                              
+--------------------------------------------------------------------------*/
+.phones {
+  position: relative;
+  top: 300px;
+  z-index: 200; }
 
 /*# sourceMappingURL=main.css.map */
