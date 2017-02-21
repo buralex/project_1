@@ -311,7 +311,9 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
 /*----------------------------------------------------
                         galary animation
 -----------------------------------------------------*/
-var nodes  = document.querySelectorAll('.frame'),
+function gallery(liSel) {
+  
+  var nodes  = document.querySelectorAll(liSel),
     _nodes = [].slice.call(nodes, 0);
 
 var getDirection = function (ev, obj) {
@@ -359,5 +361,9 @@ _nodes.forEach(function (el) {
         addClass( ev, this, 'out' );
     }, false);
 });
+  
+}
+
+
 
 /*--------------------------------------------------------*/

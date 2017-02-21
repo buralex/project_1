@@ -79,11 +79,18 @@ body {
     text-shadow: none;
     color: #a3c0ff; }
 
-#langSwitch {
+.langSwitch {
   position: absolute;
   top: 100px;
   right: 0;
-  z-index: 90; }
+  z-index: 90;
+  margin: 0 10px 0 0; }
+
+.btn-default:hover {
+  background-color: rgba(62, 109, 218, 0.1); }
+
+.open > .dropdown-toggle.btn-default:focus, .open > .dropdown-toggle.btn-default:hover {
+  background-color: rgba(62, 109, 218, 0.2); }
 
 p {
   font-size: 1.6rem; }
@@ -353,15 +360,12 @@ h4 {
     opacity: 1; } }
 /*---------------  WAVE --------------------------*/
 .parent {
+  padding: 6% 0 6% 0;
   position: relative; }
 
 .wave {
   perspective: 800px;
   width: 100%;
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
   z-index: 10;
   background-color: rgba(255, 255, 255, 0.6);
   font-family: russoOne, Impact, "Arial Black", "sans serif";
@@ -542,13 +546,9 @@ h4 {
 /*-------------------------------------------------------------------------
                               cube
 --------------------------------------------------------------------------*/
-#box {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateY(-50%) translateX(-50%);
+.box-wrap {
   width: 100px;
-  height: 100px;
+  margin: 0 auto;
   -webkit-perspective: 600px;
   perspective: 600px; }
 
@@ -675,6 +675,9 @@ h4 {
                               Second Container About
                               
 --------------------------------------------------------------------------*/
+.about-content {
+  padding: 5%; }
+
 .face {
   cursor: pointer;
   margin: 40px auto 20px auto;
