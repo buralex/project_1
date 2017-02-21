@@ -115,7 +115,19 @@ body {
   font: 10px Montserrat, sans-serif;
   line-height: 1.8;
   color: #000;
+  
+  ::-moz-selection {
+  background-color: rgba(10,10,10,1);
+  text-shadow: none;
+  color: rgba(163, 192, 255, 1);
   }
+
+  ::selection {
+      background-color: rgba(10,10,10,1);
+      text-shadow: none;
+      color: rgba(163, 192, 255, 1);
+  }  
+}
 
 #langSwitch {
   position: absolute;
@@ -243,7 +255,8 @@ h4 {
 
 .navbar-wrap {
   height: 50px;
-  background-color: #e5edf5;
+  //background-color: #e5edf5;
+  background-color: #e7e7e7;
 }
 .navbar {
   width: 100%;
@@ -328,9 +341,7 @@ h4 {
   font: 2rem Arial;
 }
 
- #about:target .fadeUp, #projects:target .row, #contact:target .row{
-   //animation: fade 1s linear;
- }
+
 
 
 @keyframes fade {
@@ -466,7 +477,7 @@ h4 {
 
 .bg-1 { 
   transition: 3s;
-  backface-visibility: hidden;
+  //backface-visibility: hidden;
   background: #e5edf5; /* For browsers that do not support gradients */
   //background: -webkit-linear-gradient(left, #f6fafe, #e5edf5, #f6fafe); /* For Safari 5.1 to 6.0 */
   //background: -o-linear-gradient(right, #f6fafe, #e5edf5, #f6fafe); /* For Opera 11.1 to 12.0 */
@@ -541,7 +552,8 @@ h4 {
 }
 
 .wave {
-  backface-visibility: hidden;
+  perspective: 800px;
+  //backface-visibility: hidden;
   width: 100%;
   //position: absolute;
   position: absolute;
@@ -609,10 +621,10 @@ h4 {
 /*-----------------------------------------------------------------*/
 
 .cont-persp {
-  //position: relative;
-  text-align: center;
-  perspective: 400px;
-  perspective-origin: 50% 80%;
+  position: relative;
+  //text-align: center;
+  //perspective: 400px;
+  //perspective-origin: 50% 80%;
   
   //height: 100vh;
   //outline: 5px solid red;
@@ -622,7 +634,7 @@ h4 {
   width: 100%;
   position: relative;
   bottom: 10px;
-  z-index:99;
+  z-index:20;
   height: 10px;
   background: black;
   border-top-right-radius: 50% 100%;
@@ -663,7 +675,7 @@ h4 {
   //box-shadow: 0px -42px 122px -71px rgba(40, 57, 169, 1);
 }
 .fly1 {
-  backface-visibility: hidden;
+  //backface-visibility: hidden;
   font-family: russoOne, Impact, "Arial Black", "sans serif";
     //text-transform: uppercase;
     letter-spacing: 1.5rem;
@@ -881,16 +893,33 @@ h4 {
 }
 /*--------------------------------------------------------------------------
 
-                              Second Container 
+                              Second Container About
                               
 --------------------------------------------------------------------------*/
+.about-content {
+  // position: absolute;
+  // left: 50%;
+  // top: 50%;
+  // -webkit-backface-visibility: hidden;
+  // -webkit-backface-visibility: hidden;
+  // transform: translateZ(0);
+  // transform: translateY(-50%) translateX(-50%) translateZ(0) scale(1.0, 1.0);
+  // z-index: 1;
+  // width: 100%;
+  
+   //-webkit-backface-visibility: hidden;
+    //-webkit-transform: translateZ(0) scale(1.0, 1.0);
+    //transform: translateZ(0);
+  
+}
+
 .face {
-  border-radius: 50%;
+  //border-radius: 50%;
   cursor: pointer;
-  margin: 0 auto;
+  margin: 40px auto 20px auto;
   display: block;
   width: 10%;
-  height: 100px;
+  height: 145px;
   //outline: 1px solid red;
   background: url(../img/face-up.svg) no-repeat ;
   background-position: center;
@@ -912,11 +941,11 @@ h4 {
 }
 
 .quote {
-  -webkit-font-smoothing: antialiased;
+  //-webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   position: relative;
   cursor: pointer;
-  backface-visibility: hidden;
+  //backface-visibility: hidden;
   //height: 60px;
   //border-bottom: 5px solid green;
   //margin: 80px 0  80px  0;
@@ -929,7 +958,7 @@ h4 {
   right: 0;
   top:0;
   bottom: 0;
-  margin: 80px auto 80px auto;
+  margin: 20px auto 40px auto;
   
 
   &.turned {
@@ -939,7 +968,7 @@ h4 {
     transition: 1s;
   }
   
-  &.turned h3 {
+  &.turned h2 {
     //color: green;
     -webkit-transform: rotateY(180deg) rotateX(180deg) ;
     transform: rotateY(180deg)  rotateX(180deg) ;
@@ -954,7 +983,7 @@ h4 {
     transition: 1s;
   }
   
-  &.turned.again h3 {
+  &.turned.again h2 {
     //color: green;
     -webkit-transform: rotateY(360deg)  rotateX(360deg) ;
     transform: rotateY(360deg)  rotateX(360deg) ;
@@ -1042,23 +1071,195 @@ h4 {
 
 
 .bg-2 {
+  h3 {
+    //padding: 50px 0 0 0;
+  }
+  
+  //border-top: 1px solid #474e5d;
   position: relative;
-  backface-visibility: hidden;
-  background-color: #474e5d; /* Dark Blue */
+  //backface-visibility: hidden;
+  background-color: #474e5d; 
   color: #ffffff;
 }
 
+/*--------------------------------------------------------------------------
+
+                              Third Container Projects
+                              
+--------------------------------------------------------------------------*/
+
 .bg-3 { 
-  backface-visibility: hidden;
-  background-color: #ffffff; /* White */
+  //backface-visibility: hidden;
+  background-color: #ffffff; 
   color: #555555;
 }
+
+/*gallery*/
+
+// .gallery ul{
+//   width: 100%;
+//   display: block;
+//   list-style: none;
+//   padding: 0;
+//   margin: 0;
+  
+//   & li {
+//     padding: 5px 5px 5px 5px;
+//     display: block;
+//     //position: relative;
+//     //padding-bottom: 100%;
+//   }
+//   & li a{
+//     outline: 1px solid blue;
+//     display: block;
+//     position: relative;
+//     overflow: hidden;
+//     height: 200px;
+//     //padding-bottom: 100%;
+//   }
+//   & li a img{
+//     border: 4px solid #eef0f5;
+//     width: 100%;
+//     height: auto;
+//     display: block;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     padding-bottom: 100%;
+//   }
+// }
+
+$duration: 300ms;
+$timing-fn: ease;
+$turquoise: #1ABC9C;
+$wet-asphalt: #34495E;
+$midnight-blue: #2C3E50;
+$clouds: #ECF0F1;
+
+
+.gallery-box {
+  width: 50%;
+  //height: 100px;
+  margin: 50px auto;
+  border: 1px solid red;
+  &::after {
+    content:"";
+    display: block;
+    clear: both;
+  }
+}
+
+.frame{
+  margin: 5px;
+  padding: 5px;
+  list-style: none;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border: 1px solid green;
+  float: left;
+}
+
+.info {
+  overflow: hidden;
+  transform: translateY(100%);
+  // hide-initial-state
+  //transform: rotate3d(1,0,0, 90deg);
+  
+  width: 100%;
+  height: 100%;
+  //padding: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  pointer-events: none;
+  //background-color: transparentize($turquoise, .1);
+}
+
+.in-top .info {
+   //transform-origin: 50% 0%;
+   animation: in-top $duration $timing-fn 0ms 1 forwards;
+}
+.in-right .info {
+  //transform-origin: 100% 0%;
+  animation: in-right $duration $timing-fn 0ms 1 forwards;
+}
+.in-bottom .info {
+  //transform-origin: 50% 100%;
+  animation: in-bottom $duration $timing-fn 0ms 1 forwards;
+}
+.in-left .info {
+  //transform-origin: 0% 0%;
+  animation: in-left $duration $timing-fn 0ms 1 forwards;
+}
+
+.out-top .info {
+  //transform-origin: 50% 0%;
+  animation: out-top $duration $timing-fn 0ms 1 forwards;
+}
+.out-right .info {
+  //transform-origin: 100% 50%;
+  animation: out-right $duration $timing-fn 0ms 1 forwards;
+}
+.out-bottom .info {
+  //transform-origin: 50% 100%;
+  animation: out-bottom $duration $timing-fn 0ms 1 forwards;
+}
+.out-left .info {
+  //transform-origin: 0% 0%;
+  animation: out-left $duration $timing-fn 0ms 1 forwards;
+}
+
+
+@keyframes in-top {
+  from {transform: translateY(-100%)}
+  to   {transform: translateY(0)}}
+@keyframes in-right {
+  from {transform: translateX(100%)}
+  to   {transform: translateX(0)}}
+@keyframes in-bottom {
+  from {transform: translateY(100%)}
+  to   {transform: translateY(0)}}
+@keyframes in-left {
+  from {transform: translateX(-100%)}
+  to   {transform: translateX(0)}}
+
+@keyframes out-top {
+  from {transform: translateY(0)}
+  to   {transform: translateY(-100%)}}
+@keyframes out-right {
+  from {transform: translateX(0)}
+  to   {transform: translateX(100%)}}
+@keyframes out-bottom {
+  from {transform: translateY(0)}
+  to   {transform: translateY(100%)}}
+@keyframes out-left {
+  from {transform: translateX(0)}
+  to   {transform: translateX(-100%)}}
+
+
+/*gallery*/
+
+/*--------------------------------------------------------------------------
+
+                              Fourth Container Contact
+                              
+--------------------------------------------------------------------------*/
+
 .bg-4 { 
-  backface-visibility: hidden;
-  background-color: #2f2f2f; /* Black Gray */
+  //backface-visibility: hidden;
+  background-color: #2f2f2f; 
   color: #fff;
 }
 
+/*--------------------------------------------------------------------------
+
+                              Other
+                              
+--------------------------------------------------------------------------*/
 
 .night {
   height: 300px;
@@ -1287,13 +1488,4 @@ h4 {
       transform: skewY(-20deg) translateY(25%);
   }
 }
-/*--------------------------------------------------------------------------
 
-                              angular
-                              
---------------------------------------------------------------------------*/
-.phones {
-  position: relative;
-  top: 300px;
-  z-index: 200;
-}

@@ -1,5 +1,5 @@
  "use strict";
-console.log("sdkfjklsafas");
+
  /* -----------------------------------------------------------------------------
                              heights of first block
 ----------------------------------------------------------------------------- */
@@ -16,14 +16,20 @@ function starting() {
     function calcHeight() {
       //window.outerHeight
       var vheight = Math.max( document.documentElement.clientHeight, window.innerHeight );
-      document.querySelector('.cont-persp').style.height = vheight + "px";
+      var views = document.querySelectorAll('.cont-persp');
+      
+      for ( var i  = 0; i < views.length; i++ ) {
+        var view = views[i];
+        view.style.height = vheight + "px"
+      }
+      
       document.querySelector('.parent').style.height = vheight*0.5 + "px";
       document.querySelector('.stage').style.height = (vheight - vheight*0.5 - 50) + "px";
   
       //console.log("d", q.s('.parent').style.paddingTop = vheight*0.2 + "px");
     }
     calcHeight();
-    window.addEventListener("resize", calcHeight);
+    window.addEventListener("resize", debounce(function() { calcHeight() }, 10));
     //window.addEventListener("scroll", calcWidth);
 
   
@@ -32,7 +38,6 @@ function starting() {
 
   
 }
-
 
   /* -----------------------------------------------------------------------------
 
@@ -191,7 +196,7 @@ function navHide(navSel, upCl) {
       // Scroll Up
       if(st < lastScrollTop) {
         navCl.remove(upCl);
-        //console.log(st, windHeight, documHeight);
+        //console.log(st, lastScrollTop, windHeight, documHeight);
       }
     }
     lastScrollTop = st;
@@ -258,9 +263,9 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
                //var dCl = div.classList;
                if (div.classList.contains("slideanim") ) {
                  
-                 //div.classList.remove("slide");
+                 div.classList.remove("slide");
                  
-                 //debounce(function() { div.classList.add("slide"); }, 10)();
+                 debounce(function() { div.classList.add("slide"); }, 10)();
                  
                  //TweenLite.from(div, 0.7, {y: '+=70%', autoAlpha: 0});
                  
@@ -304,8 +309,55 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
 
     
 /*----------------------------------------------------
-                        name animation
+                        galary animation
 -----------------------------------------------------*/
+var nodes  = document.querySelectorAll('.frame'),
+    _nodes = [].slice.call(nodes, 0);
 
- 
- /*--------------------------------------------------------*/
+var getDirection = function (ev, obj) {
+    var w = obj.offsetWidth,
+        h = obj.offsetHeight,
+        x = (ev.pageX - obj.offsetLeft - (w / 2) * (w > h ? (h / w) : 1)),
+        y = (ev.pageY - obj.offsetTop - (h / 2) * (h > w ? (w / h) : 1)),
+        d = Math.round( Math.atan2(y, x) / 1.57079633 + 5 ) % 4;
+  console.log(ev.pageX, obj.offsetLeft);
+  console.log(w, h, x, y, d);
+    return d;
+};
+
+var addClass = function ( ev, obj, state ) {
+    var direction = getDirection( ev, obj ),
+        class_suffix = "";
+    
+    //obj.className = "";
+  obj.classList.remove( 'in-top' );
+    obj.classList.remove( 'in-right' );
+    obj.classList.remove( 'in-bottom' );
+    obj.classList.remove( 'in-left' );
+    obj.classList.remove( 'out-top' );
+    obj.classList.remove( 'out-right' );
+    obj.classList.remove( 'out-bottom' );
+    obj.classList.remove( 'out-left' );
+    
+    switch ( direction ) {
+        case 0 : class_suffix = '-top';    break;
+        case 1 : class_suffix = '-right';  break;
+        case 2 : class_suffix = '-bottom'; break;
+        case 3 : class_suffix = '-left';   break;
+    }
+    
+    obj.classList.add( state + class_suffix );
+};
+
+// bind events
+_nodes.forEach(function (el) {
+    el.addEventListener('mouseover', function (ev) {
+        addClass( ev, this, 'in' );
+    }, false);
+
+    el.addEventListener('mouseout', function (ev) {
+        addClass( ev, this, 'out' );
+    }, false);
+});
+
+/*--------------------------------------------------------*/
