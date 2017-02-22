@@ -16,15 +16,35 @@ function starting() {
     function calcHeight() {
       //window.outerHeight
       var vheight = Math.max( document.documentElement.clientHeight, window.innerHeight );
-      var views = document.querySelectorAll('.cont-persp');
+      var views = document.querySelectorAll('.cont-view');
       
       for ( var i  = 0; i < views.length; i++ ) {
         var view = views[i];
         view.style.height = vheight + "px"
       }
       
-      document.querySelector('.parent').style.height = vheight*0.5 + "px";
-      document.querySelector('.stage').style.height = (vheight - vheight*0.5 - 50) + "px";
+      //var name = document.querySelector('.wave');
+      var nameH = parseFloat(getComputedStyle(document.querySelector('.wave')).height),
+          cubeH = parseFloat(getComputedStyle(document.querySelector('.box-wrap')).height),
+          aboutH = parseFloat(getComputedStyle(document.querySelector('.about-content')).height);
+      console.log(nameH, (vheight/2 - nameH)/2);
+      if (vheight > 500) {
+        document.querySelector('.wave').style.marginTop = ((vheight - 50)/2 - nameH)/2 + 'px';
+        document.querySelector('.wave').style.marginBottom = ((vheight - 50)/2 - nameH)/2 + 'px';
+      }
+      if (vheight > 500) {
+        document.querySelector('.box-wrap').style.marginTop = ((vheight - 50)/2 - cubeH)/2 + 'px';
+        document.querySelector('.box-wrap').style.marginBottom = ((vheight - 50)/2 - cubeH)/2 + 'px';
+      }
+      if (vheight > aboutH) {
+        document.querySelector('.about-content').style.marginTop = ((vheight) - aboutH)/2 + 'px';
+        document.querySelector('.about-content').style.marginBottom = ((vheight) - aboutH)/2 + 'px';
+      }
+      
+      
+      
+      
+      
   
       //console.log("d", q.s('.parent').style.paddingTop = vheight*0.2 + "px");
     }
@@ -319,9 +339,18 @@ function gallery(liSel) {
 var getDirection = function (ev, obj) {
     var w = obj.offsetWidth,
         h = obj.offsetHeight,
-        x = (ev.pageX - obj.offsetLeft - (w / 2) * (w > h ? (h / w) : 1)),
-        y = (ev.pageY - obj.offsetTop - (h / 2) * (h > w ? (w / h) : 1)),
-        d = Math.round( Math.atan2(y, x) / 1.57079633 + 5 ) % 4;
+        x = (ev.clientX - obj.getBoundingClientRect().left - (w / 2) ),
+        y = (ev.clientY - obj.getBoundingClientRect().top - (h / 2) ),
+        d ;
+  var angle = Math.atan(h/w)/(Math.PI / 180);
+  var pointAngle = Math.abs(Math.atan(y/x)/(Math.PI / 180));
+  var angle2 = Math.atan(w/h)/(Math.PI / 180);
+  var pointAngle2 = Math.abs(Math.atan(x/y)/(Math.PI / 180));
+  
+  if (y<0 && angle < pointAngle) {d = 0;}
+  if (x>0 && angle2 < pointAngle2) {d = 1;}
+  if (y>0 && angle < pointAngle) {d = 2;}
+  if (x<0 && angle2 < pointAngle2) {d = 3;}
   console.log(ev.pageX, obj.offsetLeft);
   console.log(w, h, x, y, d);
     return d;

@@ -19,18 +19,14 @@
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.min.js"></script>
 </head>
-<body>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
   <div class="modal-body1"><div><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
   <div class="modal-body2"><div><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
 
-  <div class="dropdown langSwitch">
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">EN
-    <span class="caret"></span></button>
-    <ul class="dropdown-menu ">
-      <li><a href="#!/en">EN</a></li>
-      <li><a href="#!/ru">RU</a></li>
-    </ul>
-  </div>
+      <select onchange="window.location=this.value" class="form-control langSwitch" >
+        <option value="#!/en">EN</option>
+        <option value="#!/ru">RU</option>
+      </select>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>

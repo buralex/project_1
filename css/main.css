@@ -80,8 +80,10 @@ body {
     color: #a3c0ff; }
 
 .langSwitch {
+  width: 50px;
+  padding: 6px 0 6px 0;
   position: absolute;
-  top: 100px;
+  top: 60px;
   right: 0;
   z-index: 90;
   margin: 0 10px 0 0; }
@@ -120,34 +122,6 @@ h4 {
                                BUTTONS
   
 ----------------------------------------------------------------------------- */
-.btn-link, .btn-gallery, .btn-gallery-plus {
-  display: inline-block;
-  background-color: #11719f;
-  padding: 12px 12px 12px 12px;
-  text-decoration: none;
-  color: #fff;
-  font-weight: bold;
-  font-family: Montserrat, sans-serif;
-  font-size: 1.2rem; }
-  .btn-link:hover, .btn-gallery:hover, .btn-gallery-plus:hover {
-    background-color: #1692cd; }
-
-.btn-link-right {
-  margin-left: 10px; }
-
-.btn-gallery {
-  padding: 8px 47px 8px 12px; }
-
-.btn-gallery-plus {
-  position: relative;
-  padding: 5px 16px 5px 16px;
-  background-color: #7e921e;
-  font-size: 2.2rem;
-  line-height: 2.2rem;
-  vertical-align: top; }
-  .btn-gallery-plus:hover {
-    background-color: #a3bc27; }
-
 .btn-pagination {
   padding: 10px 15px;
   background-color: #4eabd7; }
@@ -307,7 +281,6 @@ h4 {
   background-size: 100%; }
 
 .bg-1 {
-  transition: 3s;
   background: #e5edf5;
   /* For browsers that do not support gradients */
   color: #000; }
@@ -319,9 +292,6 @@ h4 {
   background: url(../img/web-dev.jpg) no-repeat fixed;
   background-position: 50% -200px;
   background-size: 100%; }
-  .bg-photo-wrap.animated {
-    -webkit-animation: appear 3s;
-    animation: appear 3s; }
   .bg-photo-wrap:before {
     height: 30px;
     top: -30px;
@@ -339,9 +309,7 @@ h4 {
     content: "";
     display: block;
     position: absolute;
-    width: 100%;
-    z-index: 10;
-    box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.9); }
+    width: 100%; }
   .bg-photo-wrap .mask {
     position: absolute;
     width: 100%;
@@ -360,12 +328,14 @@ h4 {
     opacity: 1; } }
 /*---------------  WAVE --------------------------*/
 .parent {
-  padding: 6% 0 6% 0;
-  position: relative; }
+  position: relative;
+  -webkit-perspective: 300px;
+  perspective: 300px;
+  perspective-origin: 50% 60%; }
 
 .wave {
-  perspective: 800px;
   width: 100%;
+  margin: 50px 0;
   z-index: 10;
   background-color: rgba(255, 255, 255, 0.6);
   font-family: russoOne, Impact, "Arial Black", "sans serif";
@@ -478,44 +448,27 @@ h4 {
   transition-delay: 1.2s; }
 
 /*-----------------------------------------------------------------*/
-.cont-persp {
+.cont-view {
   position: relative; }
-
-.line {
-  width: 100%;
-  position: relative;
-  bottom: 10px;
-  z-index: 20;
-  height: 10px;
-  background: black;
-  border-top-right-radius: 50% 100%;
-  border-top-left-radius: 50% 100%;
-  background: radial-gradient(ellipse 50% 70% at 50% 100%, #13183a, #0a0a0a); }
-
-.line-bg-2 {
-  width: 100%;
-  position: absolute;
-  top: -10px;
-  height: 10px;
-  border-top-right-radius: 50% 100%;
-  border-top-left-radius: 50% 100%;
-  background: #474e5d; }
-
-.bot-wrap {
-  background: radial-gradient(ellipse at 50% 110%, #2839a9 0%, #0a0a0a 100%); }
 
 .line-bot {
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  height: 10px;
-  background: black;
-  border-top-right-radius: 50% 100%;
-  border-top-left-radius: 50% 100%;
+  position: relative;
+  bottom: 20px;
+  height: 70px;
+  z-index: 11;
+  border-top-right-radius: 50% 10px;
+  border-top-left-radius: 50% 10px;
   background: #e5edf5; }
 
 .stage {
+  z-index: 10;
+  box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.9);
+  border-top-right-radius: 50% 10px;
+  border-top-left-radius: 50% 10px;
+  z-index: 10;
   position: relative;
+  bottom: 10px;
   background: radial-gradient(ellipse at center, #2839a9 0%, #0a0a0a 100%); }
 
 .fly1 {
@@ -548,7 +501,7 @@ h4 {
 --------------------------------------------------------------------------*/
 .box-wrap {
   width: 100px;
-  margin: 0 auto;
+  margin: 73px auto;
   -webkit-perspective: 600px;
   perspective: 600px; }
 
@@ -675,8 +628,12 @@ h4 {
                               Second Container About
                               
 --------------------------------------------------------------------------*/
+.margin {
+  margin-bottom: 50px; }
+
 .about-content {
-  padding: 5%; }
+  padding: 50px 0;
+  margin: 50px 0; }
 
 .face {
   cursor: pointer;
@@ -782,51 +739,74 @@ h4 {
 
 /********* end flipping photo*/
 .bg-2 {
-  position: relative;
   background-color: #474e5d;
   color: #ffffff; }
+
+#about {
+  border-top-right-radius: 50% 10px;
+  border-top-left-radius: 50% 10px;
+  position: relative;
+  bottom: 30px;
+  z-index: 11; }
 
 /*--------------------------------------------------------------------------
 
                               Third Container Projects
                               
 --------------------------------------------------------------------------*/
+#projects {
+  padding: 50px 0;
+  margin: 50px 0;
+  overflow: hidden; }
+
 .bg-3 {
-  background-color: #ffffff;
+  background: rgba(0, 104, 214, 0.1);
   color: #555555; }
 
 /*gallery*/
 .gallery-box {
-  width: 50%;
+  background: #fbfcfe;
   margin: 50px auto;
-  border: 1px solid red; }
-  .gallery-box::after {
-    content: "";
-    display: block;
-    clear: both; }
+  padding: 10px;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4), 0px 0px 30px 0px rgba(0, 0, 0, 0.4); }
+  .gallery-box > ul {
+    padding: 0; }
 
-.frame {
-  margin: 5px;
+li.frame {
+  position: relative;
   padding: 5px;
   list-style: none;
   display: block;
   overflow: hidden;
   position: relative;
-  width: 100px;
-  height: 100px;
-  border: 1px solid green;
   float: left; }
+  li.frame .wrap-pad {
+    overflow: hidden;
+    background: url(../img/com.png) no-repeat;
+    background-position: center;
+    background-size: 80%;
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 5px 5px 100% 5px;
+    border: 2px solid #474e5d; }
+  li.frame .wrap-pad.blue1 {
+    background: url(../img/blue1.jpg) no-repeat;
+    background-position: center;
+    background-size: cover; }
 
 .info {
   overflow: hidden;
   transform: translateY(100%);
   width: 100%;
   height: 100%;
+  padding: 10px;
   position: absolute;
   top: 0;
   left: 0;
-  border-radius: 4px;
-  pointer-events: none; }
+  pointer-events: none;
+  background: rgba(71, 78, 93, 0.8);
+  color: #fff; }
 
 .in-top .info {
   animation: in-top 300ms ease 0ms 1 forwards; }
@@ -899,6 +879,16 @@ h4 {
                               
 --------------------------------------------------------------------------*/
 .bg-4 {
+  background-color: #474e5d;
+  color: #ffffff;
+  color: #fff; }
+
+/*--------------------------------------------------------------------------
+
+                              Fifth Container Footer
+                              
+--------------------------------------------------------------------------*/
+.bg-5 {
   background-color: #2f2f2f;
   color: #fff; }
 
