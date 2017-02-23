@@ -1127,7 +1127,11 @@ $clouds: #ECF0F1;
 
 li.frame{
   position: relative;
-  padding: 5px;
+  padding: 0 5px 5px 5px;
+  background: url(../img/com.png) no-repeat;
+  background-position: center;
+  background-size: 80%;
+  
   //margin: 5px;
   list-style: none;
   display: block;
@@ -1138,11 +1142,17 @@ li.frame{
   //border: 1px solid green;
   float: left;
   
-  & .wrap-pad {
-    overflow: hidden;
-    background: url(../img/com.png) no-repeat;
+  &.blue1 {
+    background: url(../img/blue1.jpg) no-repeat;
     background-position: center;
-    background-size: 80%;
+    background-size: cover;
+    background-origin: content-box;
+    overflow: hidden;
+  }
+  
+  & > a {
+    overflow: hidden;
+    
     position: relative;
     display: block;
     width: 100%;
@@ -1151,11 +1161,7 @@ li.frame{
     //margin: 5px;
     border: 2px solid #474e5d;
   }
-  & .wrap-pad.blue1 {
-    background: url(../img/blue1.jpg) no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
+  
   
   & img {
     
@@ -1164,6 +1170,7 @@ li.frame{
 
 .info {
   overflow: hidden;
+  -webkit-transform: translateY(100%);
   transform: translateY(100%);
   // hide-initial-state
   //transform: rotate3d(1,0,0, 90deg);
@@ -1182,39 +1189,72 @@ li.frame{
 }
 
 .in-top .info {
-   //transform-origin: 50% 0%;
-   animation: in-top $duration $timing-fn 0ms 1 forwards;
+  //transform-origin: 50% 0%;
+  -webkit-animation: in-top $duration $timing-fn 0ms 1 forwards;
+  animation: in-top $duration $timing-fn 0ms 1 forwards;
 }
 .in-right .info {
   //transform-origin: 100% 0%;
+  -webkit-animation: in-right $duration $timing-fn 0ms 1 forwards;
   animation: in-right $duration $timing-fn 0ms 1 forwards;
 }
 .in-bottom .info {
   //transform-origin: 50% 100%;
+  -webkit-animation: in-bottom $duration $timing-fn 0ms 1 forwards;
   animation: in-bottom $duration $timing-fn 0ms 1 forwards;
 }
 .in-left .info {
   //transform-origin: 0% 0%;
+  -webkit-animation: in-left $duration $timing-fn 0ms 1 forwards;
   animation: in-left $duration $timing-fn 0ms 1 forwards;
 }
 
 .out-top .info {
   //transform-origin: 50% 0%;
+  -webkit-animation: out-top $duration $timing-fn 0ms 1 forwards;
   animation: out-top $duration $timing-fn 0ms 1 forwards;
 }
 .out-right .info {
   //transform-origin: 100% 50%;
+  -webkit-animation: out-right $duration $timing-fn 0ms 1 forwards;
   animation: out-right $duration $timing-fn 0ms 1 forwards;
 }
 .out-bottom .info {
   //transform-origin: 50% 100%;
+  -webkit-animation: out-bottom $duration $timing-fn 0ms 1 forwards;
   animation: out-bottom $duration $timing-fn 0ms 1 forwards;
 }
 .out-left .info {
   //transform-origin: 0% 0%;
+  -webkit-animation: out-left $duration $timing-fn 0ms 1 forwards;
   animation: out-left $duration $timing-fn 0ms 1 forwards;
 }
 
+@-webkit-keyframes in-top {
+  from {transform: translateY(-100%)}
+  to   {transform: translateY(0)}}
+@-webkit-keyframes in-right {
+  from {transform: translateX(100%)}
+  to   {transform: translateX(0)}}
+@-webkit-keyframes in-bottom {
+  from {transform: translateY(100%)}
+  to   {transform: translateY(0)}}
+@-webkit-keyframes in-left {
+  from {transform: translateX(-100%)}
+  to   {transform: translateX(0)}}
+  
+@-webkit-keyframes out-top {
+  from {transform: translateY(0)}
+  to   {transform: translateY(-100%)}}
+@-webkit-keyframes out-right {
+  from {transform: translateX(0)}
+  to   {transform: translateX(100%)}}
+@-webkit-keyframes out-bottom {
+  from {transform: translateY(0)}
+  to   {transform: translateY(100%)}}
+@-webkit-keyframes out-left {
+  from {transform: translateX(0)}
+  to   {transform: translateX(-100%)}}
 
 @keyframes in-top {
   from {transform: translateY(-100%)}
@@ -1228,7 +1268,7 @@ li.frame{
 @keyframes in-left {
   from {transform: translateX(-100%)}
   to   {transform: translateX(0)}}
-
+  
 @keyframes out-top {
   from {transform: translateY(0)}
   to   {transform: translateY(-100%)}}

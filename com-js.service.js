@@ -30,7 +30,7 @@ angular.
     flipText(".quote", ".face", "turned", "again");
     navHide(".navbar", "nav-up");
     remNav("#myNavbar li", "#myNavbar", "in", ".navbar", "nav-up");
-    gallery('.wrap-pad');
+    gallery('.frame > a');
 
   /*------------------------------ smooth scroll-------------------------------*/ 
                                   // Add smooth scrolling to all links in navbar + footer link

@@ -331,9 +331,9 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
 /*----------------------------------------------------
                         galary animation
 -----------------------------------------------------*/
-function gallery(liSel) {
+function gallery(elSel) {
   
-  var nodes  = document.querySelectorAll(liSel),
+  var nodes  = document.querySelectorAll(elSel),
     _nodes = [].slice.call(nodes, 0);
 
 var getDirection = function (ev, obj) {
@@ -360,15 +360,15 @@ var addClass = function ( ev, obj, state ) {
     var direction = getDirection( ev, obj ),
         class_suffix = "";
     
-    //obj.className = "";
-  obj.classList.remove( 'in-top' );
-    obj.classList.remove( 'in-right' );
-    obj.classList.remove( 'in-bottom' );
-    obj.classList.remove( 'in-left' );
-    obj.classList.remove( 'out-top' );
-    obj.classList.remove( 'out-right' );
-    obj.classList.remove( 'out-bottom' );
-    obj.classList.remove( 'out-left' );
+    obj.className = "";
+    // obj.classList.remove( 'in-top' );
+    // obj.classList.remove( 'in-right' );
+    // obj.classList.remove( 'in-bottom' );
+    // obj.classList.remove( 'in-left' );
+    // obj.classList.remove( 'out-top' );
+    // obj.classList.remove( 'out-right' );
+    // obj.classList.remove( 'out-bottom' );
+    // obj.classList.remove( 'out-left' );
     
     switch ( direction ) {
         case 0 : class_suffix = '-top';    break;
