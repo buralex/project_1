@@ -59,6 +59,25 @@ function starting() {
   
 }
 
+/**/
+Function.prototype.throttle = function (milliseconds) {
+    var baseFunction = this,
+        lastEventTimestamp = null,
+        limit = milliseconds;
+
+    return function () {
+        var self = this,
+            args = arguments,
+            now = Date.now();
+
+        if (!lastEventTimestamp || now - lastEventTimestamp >= limit) {
+            lastEventTimestamp = now;
+            baseFunction.apply(self, args);
+        }
+    };
+};
+/**/
+
   /* -----------------------------------------------------------------------------
 
                                DEBOUNCE  (sets timeout)
@@ -380,19 +399,78 @@ var addClass = function ( ev, obj, state ) {
     obj.classList.add( state + class_suffix );
 };
 
-// bind events
-_nodes.forEach(function (el) {
-    el.addEventListener('mouseover', function (ev) {
-        addClass( ev, this, 'in' );
-    }, false);
-
-    el.addEventListener('mouseout', function (ev) {
-        addClass( ev, this, 'out' );
-    }, false);
-});
+  // bind events
+  _nodes.forEach(function (el) {
+      el.addEventListener('mouseover', function (ev) {
+          addClass( ev, this, 'in' );
+      }, false);
+  
+      el.addEventListener('mouseout', function (ev) {
+          addClass( ev, this, 'out' );
+      }, false);
+  });
   
 }
 
 
+/*----------------------------------------------------
+                        visit animation
+-----------------------------------------------------*/
+function visit(elSel) {
+var nodes  = document.querySelectorAll(elSel),
+    _nodes = [].slice.call(nodes, 0);
+var shad  = document.querySelector('.visit__shadow');
+var cont = document.querySelector('.visit__padding');
+
+var getDirection = function (ev, obj) {
+	
+	
+	var w = obj.offsetWidth,
+      h = obj.offsetHeight,
+      x = (ev.clientX - obj.getBoundingClientRect().left - (w / 2) ),
+      y = (ev.clientY - obj.getBoundingClientRect().top - (h / 2) ),
+	    xS = (ev.clientX - obj.getBoundingClientRect().left ),
+      yS = (ev.clientY - obj.getBoundingClientRect().top ),
+      d, yNew, xNew, xShad, yShad ;
+	
+			yNew = -( (y*6) / (h/2));
+			xNew = (x*6) / (w/2);
+			xShad = 30 + Math.abs((xS*30) / w);
+			yShad = 20 + Math.abs((yS*40) / (h));
+	
+		obj.style.cssText = "transform: rotateX(" + yNew + "deg) rotateY(" + xNew + "deg);-webkit-transform: rotateX(" + yNew + "deg) rotateY(" + xNew + "deg);-moz-transform: rotateX(" + yNew + "deg) rotateY(" + xNew + "deg)";
+		
+	shad.style.cssText = "background-image: -webkit-linear-gradient(" + xShad + "deg, rgba(0, 0, 0, 0.5), transparent " + yShad +"%);" + "background-image: linear-gradient(" + xShad + "deg, rgba(0, 0, 0, 0.5), transparent " + yShad +"%);";
+	console.log(ev.pageX, obj.offsetLeft);
+ 	console.log(w, h, x, y, d);
+	console.log("xS= %f, yS= %f",xS,yS);
+
+};
+
+var addClass = function ( ev, obj, state ) {
+    var direction = getDirection( ev, obj ),
+        class_suffix = "";
+	
+	
+ 
+};
+
+
+  // bind events
+  _nodes.forEach(function (el) {
+      el.addEventListener('mousemove', function (ev) {
+          getDirection(ev, this);
+      }.throttle(20), false);
+  	
+  	$(el.parentElement).mouseleave(function(){
+  		document.querySelector('.visit').style.cssText = "-webkit-transition: 0.5s; transition: 0.5s;";
+  		shad.style.cssText = "background-image: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.5), transparent 40%); background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.5), transparent 40%);";
+  	});
+  	console.log(el.parentElement);
+  
+  });
+
+
+}
 
 /*--------------------------------------------------------*/

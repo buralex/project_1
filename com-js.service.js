@@ -31,6 +31,7 @@ angular.
     navHide(".navbar", "nav-up");
     remNav("#myNavbar li", "#myNavbar", "in", ".navbar", "nav-up");
     gallery('.frame > a');
+    visit('.visit');
 
   /*------------------------------ smooth scroll-------------------------------*/ 
                                   // Add smooth scrolling to all links in navbar + footer link
