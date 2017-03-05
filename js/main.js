@@ -26,7 +26,9 @@ function starting() {
       //var name = document.querySelector('.wave');
       var nameH = parseFloat(getComputedStyle(document.querySelector('.wave')).height),
           cubeH = parseFloat(getComputedStyle(document.querySelector('.box-wrap')).height),
-          aboutH = parseFloat(getComputedStyle(document.querySelector('.about-content')).height);
+          aboutH = parseFloat(getComputedStyle(document.querySelector('.about-content')).height),
+          projectsH = parseFloat(getComputedStyle(document.querySelector('.projects-content')).height),
+          contactH = parseFloat(getComputedStyle(document.querySelector('.contact-content')).height);
       console.log(nameH, (vheight/2 - nameH)/2);
       if (vheight > 500) {
         document.querySelector('.wave').style.marginTop = ((vheight - 50)/2 - nameH)/2 + 'px';
@@ -39,6 +41,14 @@ function starting() {
       if (vheight > aboutH) {
         document.querySelector('.about-content').style.marginTop = ((vheight) - aboutH)/2 + 'px';
         document.querySelector('.about-content').style.marginBottom = ((vheight) - aboutH)/2 + 'px';
+      }
+      if (vheight > projectsH) {
+        document.querySelector('.projects-content').style.marginTop = ((vheight) - projectsH)/2 + 'px';
+        document.querySelector('.projects-content').style.marginBottom = ((vheight) - projectsH)/2 + 'px';
+      }
+      if (vheight > contactH) {
+        document.querySelector('.contact-content').style.marginTop = ((vheight) - contactH)/2 + 'px';
+        document.querySelector('.contact-content').style.marginBottom = ((vheight) - contactH)/2 + 'px';
       }
       
       
@@ -416,6 +426,9 @@ var addClass = function ( ev, obj, state ) {
 /*----------------------------------------------------
                         visit animation
 -----------------------------------------------------*/
+var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+
+
 function visit(elSel) {
 var nodes  = document.querySelectorAll(elSel),
     _nodes = [].slice.call(nodes, 0);
@@ -440,31 +453,40 @@ var getDirection = function (ev, obj) {
 	
 		obj.style.cssText = "transform: rotateX(" + yNew + "deg) rotateY(" + xNew + "deg);-webkit-transform: rotateX(" + yNew + "deg) rotateY(" + xNew + "deg);-moz-transform: rotateX(" + yNew + "deg) rotateY(" + xNew + "deg)";
 		
-	shad.style.cssText = "background-image: -webkit-linear-gradient(" + xShad + "deg, rgba(0, 0, 0, 0.5), transparent " + yShad +"%);" + "background-image: linear-gradient(" + xShad + "deg, rgba(0, 0, 0, 0.5), transparent " + yShad +"%);";
-	console.log(ev.pageX, obj.offsetLeft);
+		  shad.style.cssText = "background-image: -webkit-linear-gradient(" + xShad + "deg, rgba(0, 0, 0, 0.5), transparent " + yShad +"%);" + "background-image: linear-gradient(" + xShad + "deg, rgba(0, 0, 0, 0.5), transparent " + yShad +"%);";
+		
+	
+	
+	console.log("evpageY= %f, offsetTop= %f,", ev.pageY, obj.offsetTop, ev.pageX, obj.offsetLeft);
  	console.log(w, h, x, y, d);
 	console.log("xS= %f, yS= %f",xS,yS);
 
 };
 
-var addClass = function ( ev, obj, state ) {
-    var direction = getDirection( ev, obj ),
-        class_suffix = "";
-	
-	
- 
-};
-
 
   // bind events
   _nodes.forEach(function (el) {
+    
+    if (true){
       el.addEventListener('mousemove', function (ev) {
           getDirection(ev, this);
       }.throttle(20), false);
+    }
+      
+      
+    //   $(el).mousemove(function(event){
+    //     getDirection(event, this);
+    // }.throttle(20));
+    
+
   	
   	$(el.parentElement).mouseleave(function(){
   		document.querySelector('.visit').style.cssText = "-webkit-transition: 0.5s; transition: 0.5s;";
-  		shad.style.cssText = "background-image: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.5), transparent 40%); background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.5), transparent 40%);";
+  		
+  		 
+  		   shad.style.cssText = "background-image: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.5), transparent 40%); background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.5), transparent 40%);";
+  		
+  		
   	});
   	console.log(el.parentElement);
   

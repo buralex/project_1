@@ -268,6 +268,9 @@ h4 {
   background: url(../img/web-dev.jpg) no-repeat fixed;
   background-position: 50% -200px;
   background-size: 100%; }
+  .bg-photo-wrap.animated {
+    -webkit-animation: appear 2s;
+    animation: appear 2s; }
   .bg-photo-wrap::before {
     height: 30px;
     top: -30px;
@@ -338,90 +341,121 @@ h4 {
   -webkit-transform: translateY(-100px);
   transform: translateY(-100px); }
 
-.wave.animated .upper span, .wave.animated .under span {
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  transform: translateY(0); }
+.wave.animated .under span {
+  -webkit-animation: under 0.5s forwards;
+  animation: under 0.5s forwards; }
 
+.wave.animated .upper span {
+  -webkit-animation: upper 0.5s forwards;
+  animation: upper 0.5s forwards; }
+
+@-webkit-keyframes upper {
+  0% {
+    -webkit-transform: translateY(100px);
+    opacity: 0; }
+  100% {
+    -webkit-transform: translateY(0);
+    opacity: 1; } }
+@keyframes upper {
+  0% {
+    transform: translateY(100px);
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
+@-webkit-keyframes under {
+  0% {
+    -webkit-transform: translateY(-100px);
+    opacity: 0; }
+  100% {
+    -webkit-transform: translateY(0);
+    opacity: 1; } }
+@keyframes under {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0; }
+  100% {
+    transform: translateY(0);
+    opacity: 1; } }
 .wave .upper span:nth-child(1) {
-  -webkit-transition-delay: 0.9s;
-  transition-delay: 0.9s; }
+  -webkit-animation-delay: 0.9s;
+  animation-delay: 0.9s; }
 
 .wave .upper span:nth-child(2) {
-  -webkit-transition-delay: 0.8s;
-  transition-delay: 0.8s; }
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s; }
 
 .wave .upper span:nth-child(3) {
-  -webkit-transition-delay: 0.7s;
-  transition-delay: 0.7s; }
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s; }
 
 .wave .upper span:nth-child(4) {
-  -webkit-transition-delay: 0.6s;
-  transition-delay: 0.6s; }
+  -webkit-animation-delay: 0.6s;
+  animation-delay: 0.6s; }
 
 .wave .upper span:nth-child(5) {
-  -webkit-transition-delay: 0.5s;
-  transition-delay: 0.5s; }
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s; }
 
 .wave .upper span:nth-child(6) {
-  -webkit-transition-delay: 0.4s;
-  transition-delay: 0.4s; }
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s; }
 
 .wave .upper span:nth-child(7) {
-  -webkit-transition-delay: 0.3s;
-  transition-delay: 0.3s; }
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s; }
 
 .wave .upper span:nth-child(8) {
-  -webkit-transition-delay: 0.2s;
-  transition-delay: 0.2s; }
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s; }
 
 .wave .upper span:nth-child(9) {
-  -webkit-transition-delay: 0.1s;
-  transition-delay: 0.1s; }
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s; }
 
 .wave .under span:nth-child(1) {
-  -webkit-transition-delay: 0.2s;
-  transition-delay: 0.2s; }
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s; }
 
 .wave .under span:nth-child(2) {
-  -webkit-transition-delay: 0.3s;
-  transition-delay: 0.3s; }
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s; }
 
 .wave .under span:nth-child(3) {
-  -webkit-transition-delay: 0.4s;
-  transition-delay: 0.4s; }
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s; }
 
 .wave .under span:nth-child(4) {
-  -webkit-transition-delay: 0.5s;
-  transition-delay: 0.5s; }
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s; }
 
 .wave .under span:nth-child(5) {
-  -webkit-transition-delay: 0.6s;
-  transition-delay: 0.6s; }
+  -webkit-animation-delay: 0.6s;
+  animation-delay: 0.6s; }
 
 .wave .under span:nth-child(6) {
-  -webkit-transition-delay: 0.7s;
-  transition-delay: 0.7s; }
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s; }
 
 .wave .under span:nth-child(7) {
-  -webkit-transition-delay: 0.8s;
-  transition-delay: 0.8s; }
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s; }
 
 .wave .under span:nth-child(8) {
-  -webkit-transition-delay: 0.9s;
-  transition-delay: 0.9s; }
+  -webkit-animation-delay: 0.9s;
+  animation-delay: 0.9s; }
 
 .wave .under span:nth-child(9) {
-  -webkit-transition-delay: 1s;
-  transition-delay: 1s; }
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s; }
 
 .wave .under span:nth-child(10) {
-  -webkit-transition-delay: 1.1s;
-  transition-delay: 1.1s; }
+  -webkit-animation-delay: 1.1s;
+  animation-delay: 1.1s; }
 
 .wave .under span:nth-child(11) {
-  -webkit-transition-delay: 1.2s;
-  transition-delay: 1.2s; }
+  -webkit-animation-delay: 1.2s;
+  animation-delay: 1.2s; }
 
 /*-----------------------------------------------------------------*/
 .cont-view {
@@ -442,7 +476,6 @@ h4 {
   box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.9);
   border-top-right-radius: 50% 10px;
   border-top-left-radius: 50% 10px;
-  z-index: 10;
   position: relative;
   bottom: 10px;
   background: -webkit-radial-gradient(center, ellipse cover, #2839a9 0%, #0a0a0a 100%);
@@ -463,8 +496,10 @@ h4 {
 
 @-webkit-keyframes fly1 {
   0% {
-    opacity: 1; }
+    -webkit-transform: rotateY(-180deg);
+    opacity: 0; }
   100% {
+    -webkit-transform: rotateY(0deg);
     opacity: 1; } }
 @keyframes fly1 {
   0% {
@@ -673,7 +708,7 @@ h4 {
 
 .card-wrap {
   width: 300px;
-  margin: 20px auto; }
+  margin: 20px auto 40px auto; }
 
 .card {
   max-width: 300px;
@@ -930,7 +965,10 @@ li.frame {
                               
 --------------------------------------------------------------------------*/
 #contact {
-  padding-bottom: 50px; }
+  padding-bottom: 100px; }
+
+.contact-content {
+  padding-top: 50px; }
 
 .bg-4 {
   background-color: #474e5d;
@@ -939,7 +977,9 @@ li.frame {
 
 /*------------ visit --------------------*/
 .visit-container {
-  width: 100%; }
+  width: 100%;
+  position: relative;
+  z-index: 1; }
 
 .visit__padding {
   padding: 10px;
@@ -959,8 +999,9 @@ li.frame {
   box-shadow: 0px 50px 91px -45px rgba(0, 0, 0, 0.9); }
 
 .visit__content {
+  -webkit-transform: translateZ(100px) scale(0.9);
   transform: translateZ(100px) scale(0.9);
-  z-index: 2;
+  z-index: 1;
   position: relative; }
   .visit__content h2 {
     padding-bottom: 25px;
@@ -976,8 +1017,10 @@ li.frame {
   bottom: 20px;
   left: 30px;
   right: 30px;
+  -webkit-transform: translateZ(100px) scale(0.9);
   transform: translateZ(100px) scale(0.9);
-  border: 1px solid #2839a9; }
+  border: 1px solid #2839a9;
+  z-index: -1; }
 
 .visit__shadow {
   content: '';
@@ -989,6 +1032,7 @@ li.frame {
   width: 100%;
   background-image: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.5), transparent 40%);
   background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.5), transparent 40%);
+  z-index: -1;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden; }
 
@@ -1017,11 +1061,31 @@ li.frame {
                               
 --------------------------------------------------------------------------*/
 .bg-5 {
-  background-color: #2f2f2f;
+  background-color: #2c3342;
   color: #fff; }
 
 a[href="#myPage"] {
-  color: #c2dcf5; }
+  color: #c2dcf5;
+  text-decoration: none; }
+
+footer {
+  z-index: 20;
+  box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.9);
+  border-top-right-radius: 50% 10px;
+  border-top-left-radius: 50% 10px;
+  position: relative;
+  bottom: 10px;
+  padding: 30px 30px 30px 30px; }
+
+.line-foot {
+  width: 100%;
+  position: relative;
+  bottom: -40px;
+  height: 20px;
+  z-index: 11;
+  border-top-right-radius: 50% 10px;
+  border-top-left-radius: 50% 10px;
+  background: #bdc4cb; }
 
 /*--------------------------------------------------------------------------
 
@@ -1029,35 +1093,22 @@ a[href="#myPage"] {
                               
 --------------------------------------------------------------------------*/
 .night {
-  -webkit-transform: translateZ(0) scale(1, 1);
   height: 300px;
+  clear: both;
   overflow: hidden;
-  position: relative;
-  background-image: url(../img/night.jpg);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background: url(../img/night.jpg) no-repeat fixed;
   background-position: 50% 100%;
   background-size: 100%; }
-  .night:before {
+  .night::before {
     height: 30px;
-    top: -30px;
+    bottom: 30px;
     left: 0;
     content: "";
     display: block;
-    position: absolute;
+    position: relative;
     width: 100%;
     z-index: 20;
     box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.9); }
-  .night:after {
-    height: 30px;
-    bottom: -30px;
-    left: 0;
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    z-index: 20;
-    box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.9); }
 
 /***********/
 .modal-body1 {
