@@ -24,18 +24,64 @@
 
 ----------------------------------------------------------------------------- */
 @media (max-width: 575px) {
-  span.my-name {
-    font-size: 2rem; } }
+  div.bg-photo-wrap .parent div.wave {
+    font-size: 3rem;
+    letter-spacing: 0.5rem; }
+    div.bg-photo-wrap .parent div.wave .upper {
+      text-align: center;
+      width: 100%; }
+    div.bg-photo-wrap .parent div.wave .under {
+      text-align: center;
+      width: 100%; }
+
+  div.card-wrap {
+    width: 200px; }
+
+  .container-fluid .visit__content h2 {
+    font-size: 2rem; }
+
+  .container-fluid ul.contact-list li a {
+    font-size: 1.3rem; }
+
+  .container-fluid ul.contact-list .fa {
+    font-size: 4rem; }
+
+  .visit-container div.visit {
+    padding: 20px; } }
 @media (max-width: 767px) {
   div.face {
     height: 150px;
-    width: 40%; } }
+    width: 40%; }
+
+  .bg-photo-wrap .parent div.wave {
+    font-size: 3rem;
+    letter-spacing: 0.7rem; } }
 @media (max-width: 991px) {
   div.bg-photo-wrap {
-    background: #e5edf5 url(../img/web-dev_mobile.jpg) no-repeat 0 12%/100% fixed; }
+    background: url(../img/web-dev_mobile.jpg) no-repeat fixed;
+    background-position: 50% 100%;
+    background-size: cover; }
 
   div.night {
-    background: white url(../img/night_mobile.jpg) no-repeat bottom/100% fixed; } }
+    background: url(../img/night_mobile.jpg) no-repeat fixed;
+    background-position: 50% 100%;
+    background-size: cover; }
+
+  .parent div.wave {
+    font-size: 3.8rem;
+    letter-spacing: 1.2rem; } }
+@media (max-width: 1199px) {
+  div.wave {
+    font-size: 5rem; }
+
+  ul.contact-list li a {
+    font-size: 1.8rem; }
+
+  ul.contact-list .fa {
+    font-size: 6rem; }
+
+  div.visit {
+    padding: 40px; } }
 /* -----------------------------------------------------------------------------
 
                           MAIN STYLES
@@ -652,6 +698,12 @@ h4 {
 .about-content {
   padding: 50px 0;
   margin: 50px 0; }
+  .about-content a {
+    display: block;
+    color: #d7e6ff;
+    font-size: 2rem;
+    text-decoration: none;
+    margin: 25px 0 0 0; }
 
 .face {
   cursor: pointer;
@@ -674,7 +726,6 @@ h4 {
     transition: 1s; }
 
 .quote {
-  text-rendering: optimizeLegibility;
   position: relative;
   cursor: pointer;
   top: 0;
@@ -782,7 +833,6 @@ h4 {
   background: radial-gradient(ellipse at center, #2839a9 0%, #0a0a0a 100%);
   color: #ffffff; }
 
-/*gallery*/
 .gallery-box {
   background: #fbfcfe;
   margin: 50px auto;
@@ -1044,10 +1094,13 @@ li.frame {
   padding: 0;
   list-style: none; }
   .contact-list li {
-    margin: 0; }
+    margin: 0;
+    padding: 0; }
   .contact-list li a {
     color: #23527c;
     font-size: 2rem; }
+  .contact-list li a.phone {
+    white-space: nowrap; }
   .contact-list li a:hover {
     text-decoration: none;
     color: #337ab7; }

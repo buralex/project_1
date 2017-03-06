@@ -36,8 +36,44 @@
 ----------------------------------------------------------------------------- */
 // Extra small devices (portrait phones, less than 576px)--------------------------------------
 @media (max-width: 575px) { 
-  span.my-name{
-    font-size: 2rem;
+
+  div.bg-photo-wrap .parent div.wave {
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+    .upper {
+      text-align: center;
+      width: 100%;
+    }
+    .under {
+      text-align: center;
+      width: 100%;
+    }
+  }
+  
+  div.card-wrap {
+    width: 200px;
+  }
+  
+  .container-fluid .visit__content {
+    h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  .container-fluid ul.contact-list {
+    
+    & li a {
+      font-size: 1.3rem;
+      
+    }
+  }
+  
+  .container-fluid ul.contact-list .fa {
+    font-size: 4rem;
+  }
+  
+  .visit-container div.visit {
+    padding: 20px;
   }
   
 }
@@ -49,16 +85,33 @@
     height: 150px;
     width: 40%;
   }
+  
+ .bg-photo-wrap .parent div.wave {
+    font-size: 3rem;
+    letter-spacing: 0.7rem;
+  }
+  
 }
 
 // Medium devices (tablets, less than 992px) -------------------------------------------------
 @media (max-width: 991px) {
+  
+  
   div.bg-photo-wrap {
-    background: #e5edf5 url(../img/web-dev_mobile.jpg) no-repeat 0 12% / 100% fixed;
+    background: url(../img/web-dev_mobile.jpg) no-repeat fixed;
+    background-position: 50% 100%;
+    background-size: cover;
   }
   
   div.night {
-    background: white url(../img/night_mobile.jpg) no-repeat bottom / 100% fixed;
+    background: url(../img/night_mobile.jpg) no-repeat fixed;
+    background-position: 50% 100%;
+    background-size: cover;
+  }
+  
+  .parent div.wave {
+    font-size: 3.8rem;
+    letter-spacing: 1.2rem;
   }
   
 }
@@ -66,6 +119,25 @@
 // Large devices (desktops, less than 1200px)------------------------------------------------
 @media (max-width: 1199px) {
   
+   div.wave {
+    font-size: 5rem;
+  }
+  
+  ul.contact-list {
+    
+    & li a {
+      font-size: 1.8rem;
+      
+    }
+  }
+  
+  ul.contact-list .fa {
+    font-size: 6rem;
+  }
+  
+  div.visit {
+    padding: 40px;
+  }
   
 }
 /* -----------------------------------------------------------------------------
@@ -93,7 +165,6 @@
 
 body {
   background: #e5edf5;
-  //background: rgba(0, 0, 0, 0.2);
   font: 10px Montserrat, sans-serif;
   line-height: 1.8;
   color: #000;
@@ -215,7 +286,6 @@ h4 {
 
 .navbar-wrap {
   height: 50px;
-  //background-color: #e5edf5;
   background-color: #e7e7e7;
 }
 .navbar {
@@ -224,21 +294,13 @@ h4 {
   top:0;
   z-index: 99;
   -webkit-transition: 0.1s;
-   transition: 0.2s ;
-  
-   //transition: top 0.2s ;
-  //padding-top: 15px;
-  //padding-bottom: 15px;
+  transition: 0.2s ;
   border: 0;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 0;
   margin-bottom: 0;
   font-size: 12px;
   letter-spacing: 5px;
-  //background: linear-gradient(to right, #f6fafe, #e5edf5, #f6fafe);
-  //box-shadow: inset 0px -3px 0px 0px rgba(27, 60, 114, 0.7);
-  //border-bottom: 2px solid #1b3c72;
-  //background-color: rgba(231, 231, 231, 0.8);
 }
 
 #main-nav.navbar-nav li a {
@@ -372,14 +434,7 @@ h4 {
 }
 
 .bg-1 { 
-  //transition: 3s;
-  //backface-visibility: hidden;
   background: #e5edf5; /* For browsers that do not support gradients */
-  //background: -webkit-linear-gradient(left, #f6fafe, #e5edf5, #f6fafe); /* For Safari 5.1 to 6.0 */
-  //background: -o-linear-gradient(right, #f6fafe, #e5edf5, #f6fafe); /* For Opera 11.1 to 12.0 */
-  //background: -moz-linear-gradient(right, #f6fafe, #e5edf5, #f6fafe); /* For Firefox 3.6 to 15 */
-  //background: linear-gradient(to right, #f6fafe, #e5edf5, #f6fafe); /* Standard syntax */
-  //background-color: #e5edf5; /* Gray */
   color: #000;
 }
 
@@ -416,15 +471,12 @@ h4 {
     display: block;
     position: absolute;
     width: 100%;
-    //z-index: 10;
-    //box-shadow: 0px -5px 30px rgba(0, 0, 0, 0.9);
   }
   .mask {
     position: absolute;
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.5);
-   // z-index: 1;
   }
 }
 
@@ -444,20 +496,11 @@ h4 {
   -webkit-perspective: 300px;
   perspective: 300px;
   perspective-origin: 50% 60%;
-  //height: 30px;
-  //padding: 150px 0 150px 0;
 }
 
 .wave {
-  
-  //backface-visibility: hidden;
   width: 100%;
   margin: 50px 0;
-  //position: absolute;
-  //position: absolute;
-  //top: 50%;
-  //-webkit-transform: translateY(-50%);
-  //transform: translateY(-50%);
   z-index: 10;
   background-color: rgba(255, 255, 255, 0.6);
   font-family: russoOne, Impact, "Arial Black", "sans serif";
@@ -591,12 +634,10 @@ h4 {
   bottom: 10px;
   background: -webkit-radial-gradient(center, ellipse cover, rgba(40,57,169,1) 0%, rgba(10,10,10,1) 100%);
   background: radial-gradient(ellipse at center, rgba(40, 57, 169, 1) 0%, rgba(10,10,10,1) 100%);
-  //box-shadow: 0px -42px 122px -71px rgba(40, 57, 169, 1);
 }
 .fly1 {
-  //backface-visibility: hidden;
+
   font-family: russoOne, Impact, "Arial Black", "sans serif";
-    //text-transform: uppercase;
     letter-spacing: 1.5rem;
     font-size: 1.2rem;
     overflow: hidden;
@@ -633,7 +674,6 @@ h4 {
 .box {
   width: 100px;
   height: 100px;
-  //margin: 50px auto;
   position: relative;
   color: #111;
   -webkit-transform-style: preserve-3d;
@@ -643,7 +683,6 @@ h4 {
 .box div {
   border: 1px solid lightgray;
   border-radius:2px;
-  //opacity:0.2;
   position: absolute;
   text-align: center;
   left: 0;
@@ -836,16 +875,22 @@ h4 {
 .about-content {
   padding: 50px 0;
   margin: 50px 0;
+  
+  a {
+    display: block;
+    color: #d7e6ff;
+    font-size: 2rem;
+    text-decoration: none;
+    margin: 25px 0 0 0;
+  }
 }
 
 .face {
-  //border-radius: 50%;
   cursor: pointer;
   margin: 40px auto 20px auto;
   display: block;
   width: 10%;
   height: 145px;
-  //outline: 1px solid red;
   background: url(../img/face-up.svg) no-repeat ;
   background-position: center;
   background-size: contain;
@@ -866,19 +911,9 @@ h4 {
 }
 
 .quote {
-  //-webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
   position: relative;
   cursor: pointer;
-  //backface-visibility: hidden;
-  //height: 60px;
-  //border-bottom: 5px solid green;
-  //margin: 80px 0  80px  0;
-  //font-size: 2rem;
-  //outline: 1px solid blue;
-  //position: absolute;
   top:0;
-  //bottom: 0;
   left: 0;
   right: 0;
   top:0;
@@ -894,10 +929,8 @@ h4 {
   }
   
   &.turned h2 {
-    //color: green;
     -webkit-transform: rotateY(180deg) rotateX(180deg) ;
     transform: rotateY(180deg)  rotateX(180deg) ;
-    //transition: 1s;
   }
 
   
@@ -909,7 +942,6 @@ h4 {
   }
   
   &.turned.again h2 {
-    //color: green;
     -webkit-transform: rotateY(360deg)  rotateX(360deg) ;
     transform: rotateY(360deg)  rotateX(360deg) ;
     //transition: 1s;
@@ -1026,40 +1058,6 @@ h4 {
   color: #ffffff;
 }
 
-/*gallery*/
-
-// .gallery ul{
-//   width: 100%;
-//   display: block;
-//   list-style: none;
-//   padding: 0;
-//   margin: 0;
-  
-//   & li {
-//     padding: 5px 5px 5px 5px;
-//     display: block;
-//     //position: relative;
-//     //padding-bottom: 100%;
-//   }
-//   & li a{
-//     outline: 1px solid blue;
-//     display: block;
-//     position: relative;
-//     overflow: hidden;
-//     height: 200px;
-//     //padding-bottom: 100%;
-//   }
-//   & li a img{
-//     border: 4px solid #eef0f5;
-//     width: 100%;
-//     height: auto;
-//     display: block;
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     padding-bottom: 100%;
-//   }
-// }
 
 $duration: 0.3s;
 $timing-fn: ease;
@@ -1076,17 +1074,9 @@ $clouds: #ECF0F1;
     padding: 0;
     
   }
-  //width: 50%;
-  //height: 100px;
   margin: 50px auto;
   padding: 10px;
   box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.4), 0px 0px 30px 0px rgba(0,0,0,0.4);
-  //border: 2px solid rgba(255, 10, 31, 0.47);
-  // &::after {
-  //   content:"";
-  //   display: block;
-  //   clear: both;
-  // }
 }
 
 li.frame{
@@ -1096,7 +1086,6 @@ li.frame{
   background-position: center;
   background-size: 80%;
   
-  //margin: 5px;
   list-style: none;
   display: block;
   overflow: hidden;
@@ -1118,9 +1107,7 @@ li.frame{
     position: relative;
     display: block;
     width: 100%;
-    //z-index: 1;
     padding: 5px 5px 100% 5px;
-    //margin: 5px;
     border: 2px solid #474e5d;
   }
   
@@ -1134,61 +1121,50 @@ li.frame{
   overflow: hidden;
   -webkit-transform: translateY(100%);
   transform: translateY(100%);
-  // hide-initial-state
-  //transform: rotate3d(1,0,0, 90deg);
   
   width: 100%;
   height: 100%;
   padding: 10px;
   position: absolute;
-  //z-index: 1000;
   top: 0;
   left: 0;
-  //border-radius: 4px;
   pointer-events: none;
   background: rgba(0,0,0,0.7);
-  //background: linear-gradient(150deg, rgba(0,0,0,0.7) 0%, rgba(100,100,100,0.7) 50%, rgba(100,100,100,0.7) 50%, rgba(0,0,0,0.7) 100%);
   color: #fff;
 }
 
 .in-top .info {
-  //transform-origin: 50% 0%;
+
   -webkit-animation: in-top $duration $timing-fn forwards ;
   animation: in-top $duration $timing-fn forwards ;
 }
 .in-right .info {
-  //transform-origin: 100% 0%;
+
   -webkit-animation: in-right $duration $timing-fn forwards;
   animation: in-right $duration $timing-fn forwards;
 }
 .in-bottom .info {
-  //transform-origin: 50% 100%;
   -webkit-animation: in-bottom $duration $timing-fn forwards;
   animation: in-bottom $duration $timing-fn forwards;
 }
 .in-left .info {
-  //transform-origin: 0% 0%;
   -webkit-animation: in-left $duration $timing-fn forwards;
   animation: in-left $duration $timing-fn forwards;
 }
 
 .out-top .info {
-  //transform-origin: 50% 0%;
   -webkit-animation: out-top $duration $timing-fn forwards;
   animation: out-top $duration $timing-fn forwards;
 }
 .out-right .info {
-  //transform-origin: 100% 50%;
   -webkit-animation: out-right $duration $timing-fn forwards;
   animation: out-right $duration $timing-fn forwards;
 }
 .out-bottom .info {
-  //transform-origin: 50% 100%;
   -webkit-animation: out-bottom $duration $timing-fn forwards;
   animation: out-bottom $duration $timing-fn forwards;
 }
 .out-left .info {
-  //transform-origin: 0% 0%;
   -webkit-animation: out-left $duration $timing-fn forwards;
   animation: out-left $duration $timing-fn forwards;
 }
@@ -1319,50 +1295,31 @@ li.frame{
 .bg-4 { 
   background-color: #474e5d; 
   color: #ffffff;
-  //background-color: #2f2f2f; 
   color: #fff;
 }
 
 /*------------ visit --------------------*/
 
 .visit-container {
-	//padding: 20px;
 	width: 100%;
 	position: relative;
 	z-index: 1;
-	//outline: 1px solid blue;
-// 	-webkit-perspective: 800px;
-// 	-moz-perspective: 800px;
-// 	perspective: 800px;	
-	//overflow: hidden;
-	//font-family: Helvetica, Arial, sans-serif;
-	//transform-style: preserve-3d;
 }
 .visit__padding {
-	//outline: 1px solid green;
 	padding: 10px;
 	margin: 0 auto;
-	//width: 30%;
-	
 }
 .visit {
   -webkit-perspective: 800px;
 	-moz-perspective: 800px;
 	perspective: 800px;	
-	//-webkit-transition: transform 0.1s;
-	//transition: transform 0.1s;
 	position: relative;
 	-webkit-transform-style: preserve-3d;
 	-moz-transform-style: preserve-3d;
 	transform-style: preserve-3d;
-	//margin: 50px auto;
 	padding: 50px;
-	//border: 1px solid blue;
-	//width: 30%;
 	height: 30%;
 	background-color: #f0f5f9;
-	//box-shadow: 0px 100px 197px -23px rgba(255,255,255,1);
-	//box-shadow: 0px 10px 10px 20px rgba(0,0,0,1);
 	box-shadow: 0px 50px 91px -45px rgba(0,0,0,0.9);
 	
 }
@@ -1388,8 +1345,6 @@ li.frame{
 .bord {
 	position: absolute;
 	display: block;
-	//width: 100%;
-	//height: 100%;
 	top: 20px;
 	bottom: 20px;
 	left: 30px;
@@ -1422,18 +1377,17 @@ li.frame{
   margin: 0 auto;
   padding: 0;
   list-style: none;
-  //text-align: justify;
-  
+
   & li {
-    //display: inline-block;
     margin: 0;
+    padding: 0;
   }
   & li a {
-    //text-decoration: none;
-    //color: #337ab7;
     color: #23527c;
     font-size: 2rem;
-    
+  }
+  & li a.phone {
+    white-space: nowrap;
   }
   
   & li a:hover {
@@ -1441,6 +1395,7 @@ li.frame{
     color: #337ab7;
   }
 }
+
 .contact-list .fa {
   font-size: 8rem;
 }
@@ -1469,8 +1424,6 @@ footer {
   border-top-left-radius: 50% 10px;
   position: relative;
   bottom: 10px;
-  //background: -webkit-radial-gradient(center, ellipse cover, rgba(40,57,169,1) 0%, rgba(10,10,10,1) 100%);
-  //background: radial-gradient(ellipse at center, rgba(40, 57, 169, 1) 0%, rgba(10,10,10,1) 100%);
   padding: 30px 30px 30px 30px;
 }
 
@@ -1496,7 +1449,6 @@ footer {
   height: 300px;
   clear:both;
   overflow: hidden;
-  //position: relative;
   background: url(../img/night.jpg) no-repeat fixed;
   background-position: 50% 100%;
   background-size: 100%;
@@ -1507,7 +1459,6 @@ footer {
     left: 0;
     content: "";
     display: block;
-    //position: absolute;
     position: relative;
     width: 100%;
     z-index: 20;
@@ -1537,7 +1488,6 @@ footer {
   
   div {
     margin-right:5%;
-    //border-right: 50px dashed rgba(255, 255, 255, 0.5);
     position: absolute;
     right: 0%;
     bottom: -80%;
@@ -1566,18 +1516,12 @@ footer {
 }
 
 .modal-body2 {
- 
-  //outline: 1px solid red;
-  //border: 50px dashed rgba(255, 255, 255, 0.5);
   
   position: fixed;
   top:0%;
-  //left: 50%;
   width: 100%;
   height: 100%;
   background-color: rgba(80, 148, 237, 0.84);
-  //background: linear-gradient(to right, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 27%, rgba(73,165,191,1) 71%, rgba(73,165,191,1) 100%);
-  //opacity: 0.5;
   -webkit-transform-origin: center left;
   transform-origin: center left;
   -webkit-transform: skewX(30deg) translateX(150%);
@@ -1591,13 +1535,11 @@ footer {
   
   div {
     margin-left: 5%;
-    //border-left: 50px dashed rgba(255, 255, 255, 0.5);
     position: absolute;
     left: 0%;
     top: -80%;
     width: 8%;
     height: 200%;
-    //opacity: 0.5;
     
     transform-origin: center left;
     -webkit-transform: skewY(-20deg);
