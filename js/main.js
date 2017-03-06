@@ -29,7 +29,7 @@ function starting() {
           aboutH = parseFloat(getComputedStyle(document.querySelector('.about-content')).height),
           projectsH = parseFloat(getComputedStyle(document.querySelector('.projects-content')).height),
           contactH = parseFloat(getComputedStyle(document.querySelector('.contact-content')).height);
-      console.log(nameH, (vheight/2 - nameH)/2);
+      
       if (vheight > 500) {
         document.querySelector('.wave').style.marginTop = ((vheight - 50)/2 - nameH)/2 + 'px';
         document.querySelector('.wave').style.marginBottom = ((vheight - 50)/2 - nameH)/2 + 'px';
@@ -51,20 +51,10 @@ function starting() {
         document.querySelector('.contact-content').style.marginBottom = ((vheight) - contactH)/2 + 'px';
       }
       
-      
-      
-      
-      
-  
-      //console.log("d", q.s('.parent').style.paddingTop = vheight*0.2 + "px");
+ 
     }
     calcHeight();
     window.addEventListener("resize", debounce(function() { calcHeight() }, 10));
-    //window.addEventListener("scroll", calcWidth);
-
-  
-  
-  
 
   
 }
@@ -213,8 +203,7 @@ function navHide(navSel, upCl) {
       
       // Scroll Down
       navCl.add(upCl);
-      //console.log("scroll down ",st, windHeight, documHeight);
-      //console.log("scroll down");
+      
       
      /*--------------- add animations for sections (self-exec) -----------------*/
      (function addAnimCl(elem, classAnim) {
@@ -225,8 +214,7 @@ function navHide(navSel, upCl) {
           doSmth(el);
         }
         function  doSmth(el) {
-          //console.log( "get coords = %i , sum =  %i", getCoords(el).top, st + 600);
-          //console.log("el.getBoundingClientRect().top = %i", el.getBoundingClientRect().top);
+          
           if (el.getBoundingClientRect().top < 600) {
             //el.classList.add("slide");
             
@@ -245,7 +233,7 @@ function navHide(navSel, upCl) {
       // Scroll Up
       if(st < lastScrollTop) {
         navCl.remove(upCl);
-        //console.log(st, lastScrollTop, windHeight, documHeight);
+        
       }
     }
     lastScrollTop = st;
@@ -261,7 +249,6 @@ function navHide(navSel, upCl) {
 				? debounce(function() { hasScrolled(); scrolling = false; }, 250)()
 				: window.requestAnimationFrame(function() {
           hasScrolled();
-          //console.log('work');
           scrolling = false;
         });
         
@@ -285,9 +272,6 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
       
       function handleClick(link, index) {
       link.addEventListener('click', function(e) {
-        //e.preventDefault();
-        //goToTab(index);
-        //console.log(link.children[0].getAttribute("href"));
         
         document.querySelector(nav).classList.remove(removeClass);
         document.querySelector(navbar).classList.add(navbarHide);
@@ -300,11 +284,10 @@ function remNav(li, nav, removeClass, navbar, navbarHide) {
             var anchorAll = anchor + " *";
             
             var elms = document.querySelectorAll(anchorAll);  // array of li elements
-            //console.log(anchorAll);
+           
             
             for (var i = 0; i < elms.length; i++) {
               var div = elms[i];
-               //console.log(" element = " + div);
               show(div, i);
             }  
             
@@ -380,8 +363,6 @@ var getDirection = function (ev, obj) {
   if (x>0 && angle2 < pointAngle2) {d = 1;}
   if (y>0 && angle < pointAngle) {d = 2;}
   if (x<0 && angle2 < pointAngle2) {d = 3;}
-  console.log(ev.pageX, obj.offsetLeft);
-  console.log(w, h, x, y, d);
     return d;
 };
 
@@ -454,12 +435,6 @@ var getDirection = function (ev, obj) {
 		obj.style.cssText = "transform: rotateX(" + yNew + "deg) rotateY(" + xNew + "deg);-webkit-transform: rotateX(" + yNew + "deg) rotateY(" + xNew + "deg);-moz-transform: rotateX(" + yNew + "deg) rotateY(" + xNew + "deg)";
 		
 		  shad.style.cssText = "background-image: -webkit-linear-gradient(" + xShad + "deg, rgba(0, 0, 0, 0.5), transparent " + yShad +"%);" + "background-image: linear-gradient(" + xShad + "deg, rgba(0, 0, 0, 0.5), transparent " + yShad +"%);";
-		
-	
-	
-	console.log("evpageY= %f, offsetTop= %f,", ev.pageY, obj.offsetTop, ev.pageX, obj.offsetLeft);
- 	console.log(w, h, x, y, d);
-	console.log("xS= %f, yS= %f",xS,yS);
 
 };
 
@@ -488,7 +463,6 @@ var getDirection = function (ev, obj) {
   		
   		
   	});
-  	console.log(el.parentElement);
   
   });
 
