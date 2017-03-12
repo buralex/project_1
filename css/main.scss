@@ -1564,7 +1564,7 @@ footer {
     font-size: 6rem;
   }
   
-  div.visit {
+  .visit {
     padding: 40px;
   }
   
@@ -1574,19 +1574,19 @@ footer {
 @media (max-width: 991px) {
   
   
-  div.bg-photo-wrap {
+  .bg-photo-wrap {
     background: url(../img/web-dev_mobile.jpg) no-repeat fixed;
     background-position: 50% 100%;
     background-size: cover;
   }
   
-  div.night {
+  .night {
     background: url(../img/night_mobile.jpg) no-repeat fixed;
     background-position: 50% 100%;
     background-size: cover;
   }
   
-  .parent div.wave {
+  .wave {
     font-size: 3.8rem;
     letter-spacing: 1.2rem;
   }
@@ -1596,12 +1596,12 @@ footer {
 /*----------- Small devices (landscape phones, less than 768px)---------------*/
 @media (max-width: 767px) {
   
-  div.face {
+  .face {
     height: 150px;
     width: 40%;
   }
   
- .bg-photo-wrap .parent div.wave {
+ .wave {
     font-size: 3rem;
     letter-spacing: 0.7rem;
   }
@@ -1612,7 +1612,7 @@ footer {
 /*-------- Extra small devices (portrait phones, less than 576px) ------------*/
 @media (max-width: 575px) { 
 
-  div.bg-photo-wrap .parent div.wave {
+  .wave {
     font-size: 3rem;
     letter-spacing: 0.5rem;
     .upper {
@@ -1625,17 +1625,17 @@ footer {
     }
   }
   
-  div.card-wrap {
+  .card-wrap {
     width: 200px;
   }
   
-  .container-fluid .visit__content {
+  .visit__content {
     h2 {
       font-size: 2rem;
     }
   }
   
-  .container-fluid ul.contact-list {
+  .contact-list {
     
     & li a {
       font-size: 1.3rem;
@@ -1643,11 +1643,11 @@ footer {
     }
   }
   
-  .container-fluid ul.contact-list .fa {
+  .contact-list .fa {
     font-size: 4rem;
   }
   
-  .visit-container div.visit {
+  .visit {
     padding: 20px;
   }
   
