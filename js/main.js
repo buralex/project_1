@@ -421,9 +421,9 @@ var getDirection = function (ev, obj) {
 	
 	var w = obj.offsetWidth,
       h = obj.offsetHeight,
-      x = (ev.clientX - obj.getBoundingClientRect().left - (w / 2) ),
-      y = (ev.clientY - obj.getBoundingClientRect().top - (h / 2) ),
-	    xS = (ev.clientX - obj.getBoundingClientRect().left ),
+      x = (ev.clientX - obj.getBoundingClientRect().left - (w / 2) ),  // coordinate 'x' from center of element
+      y = (ev.clientY - obj.getBoundingClientRect().top - (h / 2) ),   // coordinate 'y' from center of element
+	    xS = (ev.clientX - obj.getBoundingClientRect().left ),	// coordinate 'x' from left of element (for Shadow)
       yS = (ev.clientY - obj.getBoundingClientRect().top ),
       d, yNew, xNew, xShad, yShad ;
 	
