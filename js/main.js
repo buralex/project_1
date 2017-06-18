@@ -50,8 +50,33 @@ function starting() {
         document.querySelector('.contact-content').style.marginTop = ((vheight) - contactH)/2 + 'px';
         document.querySelector('.contact-content').style.marginBottom = ((vheight) - contactH)/2 + 'px';
       }
-      
- 
+
+        /*--------- triangles -------------*/
+
+        var aboutWrap = document.querySelector('.about-wrap');
+        var patternAbout = Trianglify({
+            height: aboutWrap.offsetHeight,
+            width: aboutWrap.offsetWidth,
+            x_colors: ["#e5effa", "#ceddf8", "#8cadde", "#5e8bd9", "#3549d0","#2839a9","#3549d0","#5e8bd9","#8cadde","#ceddf8","#e5effa"],
+            cell_size: 60
+        });
+        var aboutBgElement = patternAbout.svg();
+        aboutBgElement.style.cssText = 'position: absolute; top: 0;';
+        aboutWrap.appendChild(aboutBgElement);
+
+        var contactWrap = document.querySelector('.contact-wrap');
+        var pattern = Trianglify({
+            height: contactWrap.offsetHeight,
+            width: contactWrap.offsetWidth,
+            x_colors: ["#e5effa", "#ceddf8", "#8cadde", "#5e8bd9", "#3549d0","#2839a9","#3549d0","#5e8bd9","#8cadde","#ceddf8","#e5effa"],
+            cell_size: 60
+        });
+        var bgElement = pattern.svg();
+        bgElement.style.cssText = 'position: absolute; top: 0;';
+        contactWrap.appendChild(bgElement);
+
+        /*--------- /triangles -------------*/
+
     }
     calcHeight();
     window.addEventListener("resize", debounce(function() { calcHeight() }, 10));

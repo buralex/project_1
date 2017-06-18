@@ -709,6 +709,7 @@ h4 {
   padding-bottom: 100%;
   text-align: center;
   margin: 0 auto;
+  z-index: 2;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden; }
   .card img {
@@ -749,8 +750,18 @@ h4 {
 
 /********* end flipping photo*/
 .bg-2 {
-  background-color: #474e5d;
   color: #ffffff; }
+
+.about-wrap, .contact-wrap {
+  position: relative; }
+
+.mask-dark {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(40, 57, 169, 0.5) 0%, rgba(10, 10, 10, 0.5) 100%);
+  background: radial-gradient(ellipse at center, rgba(40, 57, 169, 0.5) 0%, rgba(10, 10, 10, 0.5) 100%);
+  z-index: 1; }
 
 #about {
   margin: 50px 0 0 0;
