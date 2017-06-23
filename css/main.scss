@@ -72,6 +72,16 @@ body {
   }  
 }
 
+body.loaded {
+  background: white;
+}
+body.loaded .langSwitch{
+  visibility: hidden;
+}
+//.loaded .main-wrapper{visibility:hidden;}
+.icon-load{background:url(../img/loader3.gif) no-repeat left top;width:40px;height:40px;position:fixed;left:50%;top:50%;margin-left:-20px;margin-left:-20px;display:none; z-index: 1;}
+.loaded .icon-load{display:block;}
+
 .langSwitch {
   width: 50px;
   padding: 6px 0 6px 0; 
@@ -1396,7 +1406,7 @@ footer {
     -webkit-animation: moveLeft 3s;
     animation: moveLeft 3s;
   }
-  
+
   div {
     margin-right:5%;
     position: absolute;
@@ -1411,9 +1421,9 @@ footer {
       -webkit-animation: moveUp 1s 0.3s forwards;
       animation: moveUp 1s 0.3s forwards;
     }
-    
-    
-    
+
+
+
     i {
       box-shadow: inset 10px 10px 30px 7px rgba(89,153,222,0.4), inset -10px -10px 30px 7px rgba(89,153,222,0.4);
       border:1px solid transparent;
@@ -1427,7 +1437,7 @@ footer {
 }
 
 .modal-body2 {
-  
+
   position: fixed;
   top:0%;
   width: 100%;
@@ -1442,8 +1452,8 @@ footer {
     -webkit-animation: moveRight 3s;
     animation: moveRight 3s;
   }
-  
-  
+
+
   div {
     margin-left: 5%;
     position: absolute;
@@ -1451,7 +1461,7 @@ footer {
     top: -80%;
     width: 8%;
     height: 200%;
-    
+
     transform-origin: center left;
     -webkit-transform: skewY(-20deg);
     transform: skewY(-20deg);
@@ -1459,8 +1469,8 @@ footer {
       -webkit-animation: moveDown 1s 0.3s forwards;
       animation: moveDown 1s 0.3s forwards;
     }
-    
-    
+
+
     i {
       box-shadow: inset 10px 10px 30px 7px rgba(89,153,222,0.4), inset -10px -10px 30px 7px rgba(89,153,222,0.4);
       border:1px solid transparent;
@@ -1525,42 +1535,42 @@ footer {
 
 @-webkit-keyframes moveUp {
   0% {
-    
+
     -webkit-transform: skewY(-20deg) translateY(0%);
   }
   100% {
-   
+
     -webkit-transform: skewY(-20deg) translateY(-25%);
   }
 }
 @keyframes moveUp {
   0% {
-    
+
     transform: skewY(-20deg) translateY(0%);
   }
   100% {
-   
+
     transform: skewY(-20deg) translateY(-25%);
   }
 }
 
 @-webkit-keyframes moveDown {
   0% {
-    
+
      -webkit-transform: skewY(-20deg) translateY(0%);
   }
   100% {
-    
+
       -webkit-transform: skewY(-20deg) translateY(25%);
   }
 }
 @keyframes moveDown {
   0% {
-    
+
      transform: skewY(-20deg) translateY(0%);
   }
   100% {
-    
+
       transform: skewY(-20deg) translateY(25%);
   }
 }

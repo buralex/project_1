@@ -4,20 +4,24 @@ angular.
   module('commonJs').
   factory('ComJs', [
     function() {
-      
-      
+
       return { 
         prop:  function prp() {
-          
-          
-          console.log('servise');
-          
-          
+
+          //console.log('servise');
              
              //console.log('service');
  /*----------------------------------------------------------------------
               common js for all pages for initialisation functions from main.js
- ------------------------------------------------------------------------*/  
+ ------------------------------------------------------------------------*/
+
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        document.querySelector('body').classList.add('ios');
+    }
+
+    document.querySelector('body').classList.remove('loaded');
+
+
     document.querySelector('.bg-photo-wrap').classList.add('animated');
     document.querySelector('.modal-body1').classList.add('animated');
     document.querySelector('.modal-body2').classList.add('animated');

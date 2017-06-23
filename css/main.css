@@ -52,6 +52,27 @@ body {
     text-shadow: none;
     color: #a3c0ff; }
 
+body.loaded {
+  background: white; }
+
+body.loaded .langSwitch {
+  visibility: hidden; }
+
+.icon-load {
+  background: url(../img/loader3.gif) no-repeat left top;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -20px;
+  margin-left: -20px;
+  display: none;
+  z-index: 1; }
+
+.loaded .icon-load {
+  display: block; }
+
 .langSwitch {
   width: 50px;
   padding: 6px 0 6px 0;

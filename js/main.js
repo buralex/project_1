@@ -9,10 +9,7 @@ function starting() {
   document.querySelector('.wave').classList.add('animated');
   document.querySelector('.fly1').classList.add('animated');
   
-  
-  
-  
-    
+
     function calcHeight() {
       //window.outerHeight
       var vheight = Math.max( document.documentElement.clientHeight, window.innerHeight );
