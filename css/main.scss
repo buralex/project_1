@@ -1000,6 +1000,18 @@ li.frame{
     background-image: url(../img/blue1.jpg);
     background-size: cover;
   }
+
+  &.shop {
+    background-image: url(../img/shop.jpg);
+    background-size: cover;
+    background-position: top;
+  }
+
+  &.company {
+    background-image: url(../img/company.jpg);
+    background-size: contain;
+    background-position: top;
+  }
   
   & > a {
     overflow: hidden;

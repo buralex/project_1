@@ -808,6 +808,14 @@ li.frame {
   li.frame.blue1 {
     background-image: url(../img/blue1.jpg);
     background-size: cover; }
+  li.frame.shop {
+    background-image: url(../img/shop.jpg);
+    background-size: cover;
+    background-position: top; }
+  li.frame.company {
+    background-image: url(../img/company.jpg);
+    background-size: contain;
+    background-position: top; }
   li.frame > a {
     overflow: hidden;
     position: relative;
