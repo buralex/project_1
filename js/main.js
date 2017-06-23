@@ -60,9 +60,17 @@ function starting() {
             x_colors: ["#e5effa", "#ceddf8", "#8cadde", "#5e8bd9", "#3549d0","#2839a9","#3549d0","#5e8bd9","#8cadde","#ceddf8","#e5effa"],
             cell_size: 60
         });
+
+        var oldAbout = document.querySelector('.about-svg');
+        if (oldAbout) {
+            oldAbout.parentNode.removeChild(oldAbout);
+        }
+
         var aboutBgElement = patternAbout.svg();
-        aboutBgElement.style.cssText = 'position: absolute; top: 0;';
+        aboutBgElement.style.cssText = 'position: absolute; top: 0; height: 100%;';
+        aboutBgElement.classList.add('about-svg');
         aboutWrap.appendChild(aboutBgElement);
+
 
         var contactWrap = document.querySelector('.contact-wrap');
         var pattern = Trianglify({
@@ -71,8 +79,15 @@ function starting() {
             x_colors: ["#e5effa", "#ceddf8", "#8cadde", "#5e8bd9", "#3549d0","#2839a9","#3549d0","#5e8bd9","#8cadde","#ceddf8","#e5effa"],
             cell_size: 60
         });
+
+        var oldContact = document.querySelector('.contact-svg');
+        if (oldContact) {
+            oldContact.parentNode.removeChild(oldContact);
+        }
+
         var bgElement = pattern.svg();
-        bgElement.style.cssText = 'position: absolute; top: 0;';
+        bgElement.style.cssText = 'position: absolute; top: 0; height: 100%;';
+        bgElement.classList.add('contact-svg');
         contactWrap.appendChild(bgElement);
 
         /*--------- /triangles -------------*/
